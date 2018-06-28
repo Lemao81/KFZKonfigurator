@@ -1,8 +1,8 @@
-﻿using KFZKonfigurator.BusinessModels.Enum;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using KFZKonfigurator.BusinessModels.Enum;
 
-namespace KFZKonfigurator.BusinessModels
+namespace KFZKonfigurator.BusinessModels.Model
 {
     public class Configuration
     {

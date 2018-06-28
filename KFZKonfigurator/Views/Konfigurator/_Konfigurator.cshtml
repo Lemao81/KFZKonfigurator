@@ -1,1 +1,10 @@
-﻿<p>Konfigurator page</p>
+﻿@using KFZKonfigurator.Binding
+@using KFZKonfigurator.Binding.Enum
+@using KFZKonfigurator.Models
+
+<p>Konfigurator page</p>
+
+@using (var binder = new KnockoutBinder<KonfiguratorViewModel>())
+{
+    @binder.Bind(_ => _.Email).ToTextbox().Type(TextboxType.Email).Placeholder("Enter email").Label("Email Address").Build()
+}

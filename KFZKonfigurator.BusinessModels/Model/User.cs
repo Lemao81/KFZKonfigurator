@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace KFZKonfigurator.BusinessModels
+namespace KFZKonfigurator.BusinessModels.Model
 {
     public class User
     {
