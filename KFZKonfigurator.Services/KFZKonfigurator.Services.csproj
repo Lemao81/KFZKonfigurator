@@ -43,9 +43,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KFZKonfigurator.BusinessModels\KFZKonfigurator.BusinessModels.csproj">
+    <ProjectReference Include="..\KFZKonfigurator.BusinessModels\KFZKonfigurator.BusinessObjects.csproj">
       <Project>{0778d998-af3a-49eb-a1b8-0f8e53631aa7}</Project>
-      <Name>KFZKonfigurator.BusinessModels</Name>
+      <Name>KFZKonfigurator.BusinessObjects</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

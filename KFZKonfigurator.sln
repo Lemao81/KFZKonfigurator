@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFZKonfigurator.Web", "KFZK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFZKonfigurator.Services", "KFZKonfigurator.Services\KFZKonfigurator.Services.csproj", "{FF3F69CA-B005-431E-86B1-631270884ADF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFZKonfigurator.BusinessModels", "KFZKonfigurator.BusinessModels\KFZKonfigurator.BusinessModels.csproj", "{0778D998-AF3A-49EB-A1B8-0F8E53631AA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFZKonfigurator.BusinessObjects", "KFZKonfigurator.BusinessModels\KFZKonfigurator.BusinessObjects.csproj", "{0778D998-AF3A-49EB-A1B8-0F8E53631AA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
