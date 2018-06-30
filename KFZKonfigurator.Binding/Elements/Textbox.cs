@@ -10,9 +10,10 @@ namespace KFZKonfigurator.Binding
         private string _placeholder;
         private TextboxType _type = TextboxType.Text;
 
-        public Textbox(string id)
+        public Textbox(string id, string propertyName)
         {
             _id = id;
+            _propertyName = propertyName;
         }
 
         public Textbox Placeholder(string placeholder)
@@ -42,11 +43,17 @@ namespace KFZKonfigurator.Binding
         {
             var inputBuilder = new TagBuilder("input");
             inputBuilder.AddCssClass("form-control");
-            inputBuilder.MergeAttribute("type", _type.MapToText());
 
-            if (_id != null) inputBuilder.MergeAttribute("id", _id);
-            if (_placeholder != null) inputBuilder.MergeAttribute("placeholder", _placeholder);
+            var attributes = new Dictionary<string, string>
+            {
+                {"type", _type.MapToText()},
+                {"data-bind", $"textInput: {_propertyName}"}
+            };
 
+            if (_id != null) attributes.Add("id", _id);
+            if (_placeholder != null) attributes.Add("placeholder", _placeholder);
+
+            inputBuilder.MergeAttributes(attributes);
             return inputBuilder;
         }
     }

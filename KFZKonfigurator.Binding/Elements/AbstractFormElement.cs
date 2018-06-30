@@ -6,6 +6,7 @@ namespace KFZKonfigurator.Binding
     public abstract class FormElement
     {
         protected string _id;
+        protected string _propertyName;
         protected string _label;
 
         protected MvcHtmlString CreateFormGroup(TagBuilder inputBuilder)
