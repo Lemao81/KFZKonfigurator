@@ -182,6 +182,11 @@
     </Compile>
     <Compile Include="Models\KonfiguratorViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\KonfiguratorResx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KonfiguratorResx.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\MappingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +238,12 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\KonfiguratorResx.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>KonfiguratorResx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
