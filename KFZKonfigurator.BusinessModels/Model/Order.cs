@@ -8,6 +8,6 @@ namespace KFZKonfigurator.BusinessModels.Model
         public DateTime? Created { get; set; }
 
         public virtual User User { get; set; }
-        public virtual Configuration Configuration { get; set; }
+        public virtual CarConfiguration CarConfiguration { get; set; }
     }
 }

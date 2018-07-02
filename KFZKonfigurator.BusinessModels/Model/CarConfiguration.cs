@@ -4,7 +4,7 @@ using KFZKonfigurator.BusinessModels.Enum;
 
 namespace KFZKonfigurator.BusinessModels.Model
 {
-    public class Configuration
+    public class CarConfiguration
     {
         public Guid ConfigurationId { get; set; }
         public string Name { get; set; }
