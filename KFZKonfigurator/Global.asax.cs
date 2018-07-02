@@ -19,7 +19,7 @@ namespace KFZKonfigurator
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
-            DependencyInjection.Setup();
+            DiRegistrations.Setup();
         }
     }
 }

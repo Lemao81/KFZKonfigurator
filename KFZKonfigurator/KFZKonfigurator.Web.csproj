@@ -151,6 +151,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\Custom\binding.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -166,6 +167,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\knockout-3.4.2.debug.js" />
     <Content Include="Scripts\knockout-3.4.2.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -183,18 +186,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\KonfiguratorController.cs" />
-    <Compile Include="DependencyInjection.cs" />
+    <Compile Include="Controllers\CarConfigurationController.cs" />
+    <Compile Include="DiRegistrations.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\KonfiguratorViewModel.cs" />
+    <Compile Include="Models\CarConfigurationViewModel.cs" />
+    <Compile Include="Models\UpdateData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\KonfiguratorResx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>KonfiguratorResx.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\CarConfigurationDao.cs" />
+    <Compile Include="Services\DiControllerFactory.cs" />
     <Compile Include="Utils\MappingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -205,8 +211,8 @@
     <Content Include="Scripts\underscore.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Konfigurator\Index.cshtml" />
-    <Content Include="Views\Konfigurator\_Konfigurator.cshtml" />
+    <Content Include="Views\CarConfiguration\Index.cshtml" />
+    <Content Include="Views\CarConfiguration\_CarConfiguration.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -239,9 +245,13 @@
       <Project>{f576e158-c3b9-4970-a716-cddb310845e2}</Project>
       <Name>KFZKonfigurator.Binding</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KFZKonfigurator.BusinessModels\KFZKonfigurator.BusinessObjects.csproj">
+    <ProjectReference Include="..\KFZKonfigurator.BusinessModels\KFZKonfigurator.Business.csproj">
       <Project>{0778d998-af3a-49eb-a1b8-0f8e53631aa7}</Project>
-      <Name>KFZKonfigurator.BusinessObjects</Name>
+      <Name>KFZKonfigurator.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KFZKonfigurator.Data\KFZKonfigurator.Data.csproj">
+      <Project>{afed8c21-1a50-4f7c-88d7-fd057000b575}</Project>
+      <Name>KFZKonfigurator.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\KFZKonfigurator.Services\KFZKonfigurator.Services.csproj">
       <Project>{ff3f69ca-b005-431e-86b1-631270884adf}</Project>
@@ -255,6 +265,7 @@
     <EmbeddedResource Include="Resources\KonfiguratorResx.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>KonfiguratorResx.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
