@@ -13,6 +13,9 @@ namespace KFZKonfigurator.Binding.Utils
                     return "text";
                 case TextboxType.Email:
                     return "email";
+                case TextboxType.NumericInteger:
+                case TextboxType.NumericDecimal:
+                    return "number";
                 default:
                     throw new ArgumentException();
             }

@@ -9,7 +9,12 @@ namespace KFZKonfigurator.Binding
         protected string _propertyName;
         protected string _label;
 
-        protected MvcHtmlString CreateFormGroup(TagBuilder inputBuilder)
+        public MvcHtmlString Build()
+        {
+            return _label != null ? CreateFormGroup(CreateElementBuilder()) : MvcHtmlString.Create(CreateElementBuilder().ToString());
+        }
+
+        private MvcHtmlString CreateFormGroup(TagBuilder elementBuilder)
         {
             var divBuilder = new TagBuilder("div");
             divBuilder.AddCssClass("form-group");
@@ -19,11 +24,13 @@ namespace KFZKonfigurator.Binding
 
             var id = _id ?? Guid.NewGuid().ToString();
             labelBuilder.MergeAttribute("for", id);
-            inputBuilder.MergeAttribute("id", id);
+            elementBuilder.MergeAttribute("id", id);
 
-            divBuilder.InnerHtml = labelBuilder.ToString() + inputBuilder;
+            divBuilder.InnerHtml = labelBuilder.ToString() + elementBuilder;
 
             return MvcHtmlString.Create(divBuilder.ToString());
         }
+
+        protected abstract TagBuilder CreateElementBuilder();
     }
 }

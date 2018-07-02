@@ -117,10 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Error_UpdateFailed" xml:space="preserve">
+    <value>Fehler - Konfiguration konnte nicht angepasst werden</value>
+  </data>
   <data name="Label_Email" xml:space="preserve">
     <value>Email Adresse</value>
   </data>
+  <data name="Label_EnginePower" xml:space="preserve">
+    <value>Motorleistung</value>
+  </data>
+  <data name="Label_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="Placeholder_Email" xml:space="preserve">
-    <value>Email eingeben</value>
+    <value>Email eingeben...</value>
+  </data>
+  <data name="Placeholder_EnginePower" xml:space="preserve">
+    <value>Motorleistung...</value>
+  </data>
+  <data name="Placeholder_Name" xml:space="preserve">
+    <value>Name der Konfiguration...</value>
   </data>
 </root>

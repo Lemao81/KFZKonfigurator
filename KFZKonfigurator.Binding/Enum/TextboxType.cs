@@ -2,6 +2,9 @@
 {
     public enum TextboxType
     {
-        Text, Email
+        Text,
+        Email,
+        NumericInteger,
+        NumericDecimal
     }
 }

@@ -61,6 +61,15 @@ namespace KFZKonfigurator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fehler - Konfiguration konnte nicht angepasst werden.
+        /// </summary>
+        public static string Error_UpdateFailed {
+            get {
+                return ResourceManager.GetString("Error_UpdateFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email Adresse.
         /// </summary>
         public static string Label_Email {
@@ -70,11 +79,47 @@ namespace KFZKonfigurator.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email eingeben.
+        ///   Looks up a localized string similar to Motorleistung.
+        /// </summary>
+        public static string Label_EnginePower {
+            get {
+                return ResourceManager.GetString("Label_EnginePower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Label_Name {
+            get {
+                return ResourceManager.GetString("Label_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email eingeben....
         /// </summary>
         public static string Placeholder_Email {
             get {
                 return ResourceManager.GetString("Placeholder_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Motorleistung....
+        /// </summary>
+        public static string Placeholder_EnginePower {
+            get {
+                return ResourceManager.GetString("Placeholder_EnginePower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name der Konfiguration....
+        /// </summary>
+        public static string Placeholder_Name {
+            get {
+                return ResourceManager.GetString("Placeholder_Name", resourceCulture);
             }
         }
     }
