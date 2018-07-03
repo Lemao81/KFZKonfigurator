@@ -1,19 +1,21 @@
-﻿using System.Web.Mvc;
+﻿using KFZKonfigurator.Binding.Elements;
 
 namespace KFZKonfigurator.Binding
 {
     public class OngoingKnockoutBinding
     {
         private readonly string _propertyName;
+        private readonly string _optionsPropertyName;
 
-        public OngoingKnockoutBinding(string propertyName)
+        public OngoingKnockoutBinding(string propertyName, string optionsPropertyName = null)
         {
             _propertyName = propertyName;
+            _optionsPropertyName = optionsPropertyName;
         }
 
-        public MvcHtmlString ToDropdown()
+        public Dropdown ToDropdown(string id = null)
         {
-            return MvcHtmlString.Create("");
+            return new Dropdown(id, _propertyName, _optionsPropertyName);
         }
 
         public Textbox ToTextbox(string id = null)

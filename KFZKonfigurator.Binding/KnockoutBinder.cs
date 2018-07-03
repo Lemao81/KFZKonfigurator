@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using KFZKonfigurator.Base;
 using KFZKonfigurator.Base.Logging;
+using KFZKonfigurator.Binding.Models;
 
 namespace KFZKonfigurator.Binding
 {
@@ -16,7 +18,7 @@ namespace KFZKonfigurator.Binding
         private readonly JavaScriptSerializer _javaScriptSerializer = new JavaScriptSerializer();
         private readonly string _updateUrl;
 
-        public KnockoutBinder(string updateUrl, HtmlHelper htmlHelper, TViewModel viewModel)
+        public KnockoutBinder(HtmlHelper htmlHelper, TViewModel viewModel, string updateUrl)
         {
             _htmlHelper = htmlHelper;
             _viewModel = viewModel;
@@ -25,9 +27,10 @@ namespace KFZKonfigurator.Binding
             SetStartingJavascript(htmlHelper.ViewContext.Writer);
         }
 
-        public OngoingKnockoutBinding Bind<TProperty>(Expression<Func<TViewModel, TProperty>> property)
+        public OngoingKnockoutBinding Bind<TProperty>(Expression<Func<TViewModel, TProperty>> property,
+            Expression<Func<TViewModel, List<DropdownOption<TProperty>>>> optionsProperty = null)
         {
-            return new OngoingKnockoutBinding(property.GetPropertyName());
+            return new OngoingKnockoutBinding(property.GetPropertyName(), optionsProperty?.GetPropertyName());
         }
 
         public void Dispose()
@@ -48,11 +51,14 @@ namespace KFZKonfigurator.Binding
             writer.WriteLine("</div>");
             writer.WriteLine("<script>");
             writer.WriteLine($"var viewModel = $.binding.createKoViewModel({viewModelSerialized}, '{_updateUrl}');");
-            writer.WriteLine("");
-            writer.WriteLine("");
-            writer.WriteLine("");
             writer.WriteLine($"ko.applyBindings(viewModel, $('#{_id}')[0]);");
             writer.WriteLine("</script>");
         }
+    }
+
+    public class Option
+    {
+        public string Label { get; set; }
+        public int Value { get; set; }
     }
 }
