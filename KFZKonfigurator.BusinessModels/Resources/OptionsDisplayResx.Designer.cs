@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KFZKonfigurator.Resources {
+namespace KFZKonfigurator.BusinessModels.Resources {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace KFZKonfigurator.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class KonfiguratorResx {
+    internal class OptionsDisplayResx {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal KonfiguratorResx() {
+        internal OptionsDisplayResx() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KFZKonfigurator.Resources.KonfiguratorResx", typeof(KonfiguratorResx).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KFZKonfigurator.BusinessModels.Resources.OptionsDisplayResx", typeof(OptionsDisplayResx).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace KFZKonfigurator.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,83 +61,92 @@ namespace KFZKonfigurator.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fehler - Konfiguration konnte nicht angepasst werden.
+        ///   Looks up a localized string similar to Beige.
         /// </summary>
-        public static string Error_UpdateFailed {
+        internal static string Varnish_Beige {
             get {
-                return ResourceManager.GetString("Error_UpdateFailed", resourceCulture);
+                return ResourceManager.GetString("Varnish_Beige", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Adresse.
+        ///   Looks up a localized string similar to Schwarz.
         /// </summary>
-        public static string Label_Email {
+        internal static string Varnish_Black {
             get {
-                return ResourceManager.GetString("Label_Email", resourceCulture);
+                return ResourceManager.GetString("Varnish_Black", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Motorleistung.
+        ///   Looks up a localized string similar to Blau.
         /// </summary>
-        public static string Label_EnginePower {
+        internal static string Varnish_Blue {
             get {
-                return ResourceManager.GetString("Label_EnginePower", resourceCulture);
+                return ResourceManager.GetString("Varnish_Blue", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Braun.
         /// </summary>
-        public static string Label_Name {
+        internal static string Varnish_Brown {
             get {
-                return ResourceManager.GetString("Label_Name", resourceCulture);
+                return ResourceManager.GetString("Varnish_Brown", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lackierung.
+        ///   Looks up a localized string similar to Grün.
         /// </summary>
-        public static string Label_Varnish {
+        internal static string Varnish_Green {
             get {
-                return ResourceManager.GetString("Label_Varnish", resourceCulture);
+                return ResourceManager.GetString("Varnish_Green", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email eingeben....
+        ///   Looks up a localized string similar to Metallic.
         /// </summary>
-        public static string Placeholder_Email {
+        internal static string Varnish_Metallic {
             get {
-                return ResourceManager.GetString("Placeholder_Email", resourceCulture);
+                return ResourceManager.GetString("Varnish_Metallic", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Motorleistung....
+        ///   Looks up a localized string similar to Rot.
         /// </summary>
-        public static string Placeholder_EnginePower {
+        internal static string Varnish_Red {
             get {
-                return ResourceManager.GetString("Placeholder_EnginePower", resourceCulture);
+                return ResourceManager.GetString("Varnish_Red", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name der Konfiguration....
+        ///   Looks up a localized string similar to Silber.
         /// </summary>
-        public static string Placeholder_Name {
+        internal static string Varnish_Silver {
             get {
-                return ResourceManager.GetString("Placeholder_Name", resourceCulture);
+                return ResourceManager.GetString("Varnish_Silver", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wählen Sie eine Lackierung....
+        ///   Looks up a localized string similar to Weiß.
         /// </summary>
-        public static string Placeholder_Varnish {
+        internal static string Varnish_White {
             get {
-                return ResourceManager.GetString("Placeholder_Varnish", resourceCulture);
+                return ResourceManager.GetString("Varnish_White", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gelb.
+        /// </summary>
+        internal static string Varnish_Yellow {
+            get {
+                return ResourceManager.GetString("Varnish_Yellow", resourceCulture);
             }
         }
     }
