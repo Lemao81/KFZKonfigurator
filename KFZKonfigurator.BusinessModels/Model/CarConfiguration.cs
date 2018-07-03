@@ -9,8 +9,8 @@ namespace KFZKonfigurator.BusinessModels.Model
         public Guid ConfigurationId { get; set; }
         public string Name { get; set; }
         public int EnginePower { get; set; }
-        public Varnish Varnish { get; set; }
-        public Rims Rims { get; set; }
+        public Varnish? Varnish { get; set; }
+        public Rims? Rims { get; set; }
         public List<Equipment> Equipments { get; set; }
 
         public virtual Order Order { get; set; }

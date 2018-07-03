@@ -14,12 +14,14 @@ namespace KFZKonfigurator.BusinessModels.Utils
             return decimal.Parse(attribute?.Price ?? throw new ArgumentException());
         }
 
-        public static decimal GetPrice(this Rims rims)
+        public static decimal GetPrice(this Rims? rims)
         {
+            if (!rims.HasValue) return 0M;
+
             var member = typeof(Rims).GetMember(rims.ToString());
             var attribute = member[0].GetCustomAttributes(typeof(PriceAttribute), false)[0] as PriceAttribute;
 
-            return decimal.Parse(attribute?.Price ?? throw new ArgumentException());
+            return decimal.Parse(attribute?.Price ?? throw new ArgumentException("PriceAttribute is missing"));
         }
     }
 }
