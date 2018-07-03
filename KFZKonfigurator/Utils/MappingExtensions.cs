@@ -1,11 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using KFZKonfigurator.BusinessModels.Model;
+using KFZKonfigurator.Models;
 
 namespace KFZKonfigurator.Utils
 {
-    public class MappingExtensions
+    public static class MappingExtensions
     {
+        public static CarConfigurationViewModel MapToViewModel(this CarConfiguration carConfiguration)
+        {
+            return new CarConfigurationViewModel
+            {
+                EnginePower = carConfiguration.EnginePower,
+                Equipments = carConfiguration.Equipments,
+                Name = carConfiguration.Name,
+                Rims = carConfiguration.Rims,
+                Varnish = carConfiguration.Varnish
+            };
+        }
+
+        public static CarConfiguration MapToBusinessModel(this CarConfigurationViewModel carConfiguration)
+        {
+            return new CarConfiguration
+            {
+                EnginePower = carConfiguration.EnginePower,
+                Equipments = carConfiguration.Equipments,
+                Name = carConfiguration.Name,
+                Rims = carConfiguration.Rims,
+                Varnish = carConfiguration.Varnish
+            };
+        }
     }
 }

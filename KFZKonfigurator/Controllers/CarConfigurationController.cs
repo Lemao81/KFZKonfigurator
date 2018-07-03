@@ -8,35 +8,37 @@ using KFZKonfigurator.BusinessModels.Model;
 using KFZKonfigurator.BusinessModels.Services;
 using KFZKonfigurator.Data;
 using KFZKonfigurator.Resources;
+using KFZKonfigurator.Utils;
 
 namespace KFZKonfigurator.Controllers
 {
     public class CarConfigurationController : Controller
     {
-        private readonly IDao<CarConfiguration> _dao;
+        private const string CONFIGURATION_SESSION_KEY = "configuration_session_key";
         private readonly PriceCalculationService _priceCalculationService;
 
-        public CarConfigurationController(IDao<CarConfiguration> dao, PriceCalculationService priceCalculationService)
+        public CarConfigurationController(PriceCalculationService priceCalculationService)
         {
             _priceCalculationService = priceCalculationService;
-            _dao = dao;
         }
 
         public ActionResult Index()
         {
-            return View(new CarConfigurationViewModel
-            {
-                EnginePower = 50,
-                Equipments = new List<Equipment>()
-            });
+            var newConfiguration = new CarConfigurationViewModel();
+            Session[CONFIGURATION_SESSION_KEY] = newConfiguration;
+
+            return View(newConfiguration);
         }
 
-        public JsonResult Update(UpdateData data)
+        public JsonResult Update(string property, object newValue)
         {
             try
             {
-                var configuration = _dao.Update(data.Id, data.PropertyName, data.NewValue);
-                var newPrice = _priceCalculationService.CalculatePrice(configuration);
+                var configuration = Session[CONFIGURATION_SESSION_KEY] as CarConfigurationViewModel;
+                configuration?.GetType().GetProperty(property)?.SetValue(configuration, newValue);
+                Session[CONFIGURATION_SESSION_KEY] = configuration;
+
+                var newPrice = _priceCalculationService.CalculatePrice(configuration.MapToBusinessModel());
                 return Json(new {Price = newPrice});
             }
             catch (Exception e)
