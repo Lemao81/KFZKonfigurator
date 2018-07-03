@@ -22,5 +22,10 @@ namespace KFZKonfigurator.Binding
         {
             return new Textbox(id, _propertyName);
         }
+
+        public Card ToCard(string id = null)
+        {
+            return new Card(id, _propertyName);
+        }
     }
 }

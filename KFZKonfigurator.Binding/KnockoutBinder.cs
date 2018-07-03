@@ -55,10 +55,4 @@ namespace KFZKonfigurator.Binding
             writer.WriteLine("</script>");
         }
     }
-
-    public class Option
-    {
-        public string Label { get; set; }
-        public int Value { get; set; }
-    }
 }

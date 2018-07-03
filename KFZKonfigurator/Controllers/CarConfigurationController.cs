@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
 using KFZKonfigurator.Models;
-using System.Collections.Generic;
 using KFZKonfigurator.Base.Logging;
-using KFZKonfigurator.BusinessModels.Enum;
-using KFZKonfigurator.BusinessModels.Model;
 using KFZKonfigurator.BusinessModels.Services;
-using KFZKonfigurator.Data;
 using KFZKonfigurator.Resources;
 using KFZKonfigurator.Utils;
 
@@ -46,6 +42,11 @@ namespace KFZKonfigurator.Controllers
                 Logger.Error(e);
                 return Json(new {Error = KonfiguratorResx.Error_UpdateFailed});
             }
+        }
+
+        public JsonResult OrderConfiguration()
+        {
+            return Json(new {Error = ""});
         }
     }
 }

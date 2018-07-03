@@ -33,6 +33,7 @@ namespace KFZKonfigurator.Binding.Elements
         {
             var selectBuilder = new TagBuilder("select");
             selectBuilder.AddCssClass("form-control");
+            selectBuilder.AddCssClass("selectpicker");
 
             var optionsCaption = _placeholder != null ? $", optionsCaption: '{_placeholder}'" : string.Empty;
             var attributes = new Dictionary<string, string>

@@ -61,6 +61,15 @@ namespace KFZKonfigurator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bestellen.
+        /// </summary>
+        public static string Caption_OrderButton {
+            get {
+                return ResourceManager.GetString("Caption_OrderButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fehler - Konfiguration konnte nicht angepasst werden.
         /// </summary>
         public static string Error_UpdateFailed {
@@ -93,6 +102,15 @@ namespace KFZKonfigurator.Resources {
         public static string Label_Name {
             get {
                 return ResourceManager.GetString("Label_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preis.
+        /// </summary>
+        public static string Label_Price {
+            get {
+                return ResourceManager.GetString("Label_Price", resourceCulture);
             }
         }
         

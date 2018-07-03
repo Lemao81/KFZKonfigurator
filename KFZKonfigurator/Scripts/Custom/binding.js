@@ -2,27 +2,21 @@
 
 $.binding.createKoViewModel = $.binding.createKoViewModel ||
     function(viewModelJs, updateUrl) {
-        debugger;
         var viewModel = ko.mapping.fromJS(viewModelJs);
         console.log(viewModel);
         var subscriptions = [];
 
         for (observable in viewModel) {
             if (viewModel.hasOwnProperty(observable) && viewModel[observable].subscribe) {
-                var propertyName = observable;
                 subscriptions.push(viewModel[observable].subscribe(function(newValue) {
-                    debugger;
-                    var data = {
-                        PropertyName: propertyName,
-                        NewValue: newValue
-                    }
+                    var propertyName = observable;
 
-                    $.post(updateUrl, { data: data })
-                        .done(function(changedViewModel) {
-                            for (property in changedViewModel) {
-                                if (changedViewModel.hasOwnProperty(property)) {
-                                    viewModel[property](changedViewModel[property]);
-                                }
+                    $.post(updateUrl, { property: propertyName, newValue: newValue })
+                        .done(function(result) {
+                            if (result.Error) {
+                                alert(result.Error);
+                            } else if (result.Price) {
+                                viewModel['Price'](result.Price);
                             }
                         });
                 }));

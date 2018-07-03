@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractKnockoutBinderView.cs" />
+    <Compile Include="Elements\Card.cs" />
     <Compile Include="Elements\Dropdown.cs" />
     <Compile Include="Enum\TextboxType.cs" />
     <Compile Include="Elements\AbstractFormElement.cs" />
