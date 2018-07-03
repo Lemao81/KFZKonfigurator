@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 
 namespace KFZKonfigurator.Base.Logging
 {
@@ -19,6 +20,11 @@ namespace KFZKonfigurator.Base.Logging
         public static void Error(object toLog)
         {
             Log.Error(toLog.ToString());
+        }
+
+        public static void Error(Exception exception)
+        {
+            Log.Error("Exception had been thrown", exception);
         }
     }
 }
