@@ -6,22 +6,21 @@ $.binding.createKoViewModel = $.binding.createKoViewModel ||
         console.log(viewModel);
         var subscriptions = [];
 
-        for (observable in viewModel) {
-            if (viewModel.hasOwnProperty(observable) && viewModel[observable].subscribe) {
-                subscriptions.push(viewModel[observable].subscribe(function(newValue) {
-                    var propertyName = observable;
-
-                    $.post(updateUrl, { property: propertyName, newValue: newValue })
-                        .done(function(result) {
-                            if (result.Error) {
-                                alert(result.Error);
-                            } else if (result.Price) {
-                                viewModel['Price'](result.Price);
-                            }
-                        });
-                }));
-            }
-        }
+        _.mapObject(viewModel,
+            function (value, key) {
+                if (value.subscribe) {
+                    subscriptions.push(value.subscribe(function (newValue) {
+                        newValue && $.post(updateUrl, { propertyName: key, newValue: newValue })
+                            .done(function (result) {
+                                if (result.Error) {
+                                    $.utils.showDialog('Fehler', result.Error);
+                                } else if (result.Price) {
+                                    viewModel['Price'](result.Price);
+                                }
+                            });
+                    }));
+                }
+            });
 
         return viewModel;
     };
