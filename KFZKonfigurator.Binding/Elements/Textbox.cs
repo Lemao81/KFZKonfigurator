@@ -56,7 +56,7 @@ namespace KFZKonfigurator.Binding
             var attributes = new Dictionary<string, string>
             {
                 {"type", _type.MapToText()},
-                {"data-bind", $"textInput: {_propertyName}"}
+                {"data-bind", $"textInput: {_propertyName}, event: {{ blur: function() {{ onFocusLost('{_propertyName}'); }} }}"}
             };
 
             if (_id != null) attributes.Add("id", _id);

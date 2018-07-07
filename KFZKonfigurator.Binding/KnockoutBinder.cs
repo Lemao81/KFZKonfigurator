@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using KFZKonfigurator.Base;
 using KFZKonfigurator.Base.Logging;
+using KFZKonfigurator.Binding.Enum;
 using KFZKonfigurator.Binding.Models;
 
 namespace KFZKonfigurator.Binding
@@ -17,6 +18,7 @@ namespace KFZKonfigurator.Binding
         private readonly Guid _id = Guid.NewGuid();
         private readonly JavaScriptSerializer _javaScriptSerializer = new JavaScriptSerializer();
         private readonly string _updateUrl;
+        private readonly Dictionary<string, CommitStrategy> _commitStrategies = new Dictionary<string, CommitStrategy>();
 
         public KnockoutBinder(HtmlHelper htmlHelper, TViewModel viewModel, string updateUrl)
         {
@@ -28,9 +30,12 @@ namespace KFZKonfigurator.Binding
         }
 
         public OngoingKnockoutBinding Bind<TProperty>(Expression<Func<TViewModel, TProperty>> property,
-            Expression<Func<TViewModel, List<DropdownOption<TProperty>>>> optionsProperty = null)
+            Expression<Func<TViewModel, List<DropdownOption<TProperty>>>> optionsProperty = null, CommitStrategy commitStrategy = CommitStrategy.OnChange)
         {
-            return new OngoingKnockoutBinding(property.GetPropertyName(), optionsProperty?.GetPropertyName());
+            var propertyName = property.GetPropertyName();
+            _commitStrategies.Add(propertyName, commitStrategy);
+
+            return new OngoingKnockoutBinding(propertyName, optionsProperty?.GetPropertyName());
         }
 
         public void Dispose()
@@ -46,11 +51,13 @@ namespace KFZKonfigurator.Binding
         private void SetClosingJavascript(TextWriter writer)
         {
             var viewModelSerialized = _javaScriptSerializer.Serialize(_viewModel);
+            var commitStrategiesSerialized = _javaScriptSerializer.Serialize(_commitStrategies);
             Logger.Info(viewModelSerialized);
+            Logger.Info(commitStrategiesSerialized);
 
             writer.WriteLine("</div>");
             writer.WriteLine("<script>");
-            writer.WriteLine($"var viewModel = $.binding.createKoViewModel({viewModelSerialized}, '{_updateUrl}');");
+            writer.WriteLine($"var viewModel = $.binding.createKoViewModel({viewModelSerialized},{commitStrategiesSerialized}, '{_updateUrl}');");
             writer.WriteLine($"ko.applyBindings(viewModel, $('#{_id}')[0]);");
             writer.WriteLine("</script>");
         }

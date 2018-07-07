@@ -10,11 +10,12 @@
 
 @using (var binder = NewKnockoutBinder(Model, Url.Action("Update", "CarConfiguration")))
 {
-    @binder.Bind(_ => _.Name).ToTextbox().Placeholder(KonfiguratorResx.Placeholder_Name).Label(KonfiguratorResx.Label_Name).Build()
+    @binder.Bind(_ => _.Name, commitStrategy: CommitStrategy.OnFocusLost).ToTextbox().Placeholder(KonfiguratorResx.Placeholder_Name).Label(KonfiguratorResx.Label_Name).Build()
     @binder.Bind(_ => _.Varnish, _ => _.VarnishOptions).ToDropdown().Placeholder(KonfiguratorResx.Placeholder_Varnish).Label(KonfiguratorResx.Label_Varnish).Build()
+    @binder.Bind(_ => _.Rims, _ => _.RimsOptions).ToDropdown().Placeholder(KonfiguratorResx.Placeholder_Rims).Label(KonfiguratorResx.Label_Rims).Build()
     @binder.Bind(_ => _.EnginePower).ToTextbox().Type(TextboxType.NumericInteger).MinValue(50).MaxValue(200).Placeholder(KonfiguratorResx.Placeholder_EnginePower).Label(KonfiguratorResx.Label_EnginePower).Build()
-    @binder.Bind(_ => _.Email).ToTextbox().Type(TextboxType.Email).Placeholder(KonfiguratorResx.Placeholder_Email).Label(KonfiguratorResx.Label_Email).Build()
-    @binder.Bind(_ => _.Price).ToCard().Label(KonfiguratorResx.Label_Price).Button(orderButtonId, Url.Action("OrderConfiguration", "CarConfiguration"), KonfiguratorResx.Caption_OrderButton).Build()
+    @binder.Bind(_ => _.Email, commitStrategy: CommitStrategy.OnFocusLost).ToTextbox().Type(TextboxType.Email).Placeholder(KonfiguratorResx.Placeholder_Email).Label(KonfiguratorResx.Label_Email).Build()
+    @binder.Bind(_ => _.Price, commitStrategy: CommitStrategy.None).ToCard().Label(KonfiguratorResx.Label_Price).Button(orderButtonId, Url.Action("OrderConfiguration", "CarConfiguration"), KonfiguratorResx.Caption_OrderButton).Build()
 }
 
 <script type="text/javascript">
