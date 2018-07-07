@@ -23,9 +23,14 @@ namespace KFZKonfigurator.Business.Test
             var actualRims = Enum.GetValues(rimsType).OfType<Rims>()
                 .All(_ => rimsType.GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>() != null);
 
+            var varnishType = typeof(Varnish);
+            var actualVarnish = Enum.GetValues(varnishType).OfType<Varnish>()
+                .All(_ => varnishType.GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>() != null);
+
             //Assert
             Assert.IsTrue(actualEquipment);
             Assert.IsTrue(actualRims);
+            Assert.IsTrue(actualVarnish);
         }
 
         [TestMethod]
@@ -68,9 +73,17 @@ namespace KFZKonfigurator.Business.Test
                     return decimal.TryParse(attribute.Price, out var price);
                 });
 
+            var actualVarnish = Enum.GetValues(typeof(Varnish)).OfType<Varnish>()
+                .All(_ =>
+                {
+                    var attribute = typeof(Varnish).GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>();
+                    return decimal.TryParse(attribute.Price, out var price);
+                });
+
             //Assert
             Assert.IsTrue(actualEquipment);
             Assert.IsTrue(actualRims);
+            Assert.IsTrue(actualVarnish);
         }
     }
 }

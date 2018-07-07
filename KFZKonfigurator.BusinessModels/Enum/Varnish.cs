@@ -1,38 +1,39 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using KFZKonfigurator.Base.Attributes;
 using KFZKonfigurator.BusinessModels.Resources;
 
 namespace KFZKonfigurator.BusinessModels.Enum
 {
     public enum Varnish
     {
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("10")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Silver,
 
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("20")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Black,
 
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("30")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Brown,
 
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("40")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Red,
 
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("50")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Blue,
 
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("60")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Yellow,
 
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("70")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         White,
 
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("80")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Metallic,
 
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("90")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Beige,
 
-        [Display(ResourceType = typeof(OptionsDisplayResx))]
+        [Price("100")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Green
     }
 }

@@ -115,6 +115,15 @@ namespace KFZKonfigurator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Felgen.
+        /// </summary>
+        public static string Label_Rims {
+            get {
+                return ResourceManager.GetString("Label_Rims", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lackierung.
         /// </summary>
         public static string Label_Varnish {
@@ -147,6 +156,15 @@ namespace KFZKonfigurator.Resources {
         public static string Placeholder_Name {
             get {
                 return ResourceManager.GetString("Placeholder_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auswahl der Felgen....
+        /// </summary>
+        public static string Placeholder_Rims {
+            get {
+                return ResourceManager.GetString("Placeholder_Rims", resourceCulture);
             }
         }
         

@@ -135,6 +135,9 @@
   <data name="Label_Price" xml:space="preserve">
     <value>Preis</value>
   </data>
+  <data name="Label_Rims" xml:space="preserve">
+    <value>Felgen</value>
+  </data>
   <data name="Label_Varnish" xml:space="preserve">
     <value>Lackierung</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="Placeholder_Name" xml:space="preserve">
     <value>Name der Konfiguration...</value>
+  </data>
+  <data name="Placeholder_Rims" xml:space="preserve">
+    <value>Auswahl der Felgen...</value>
   </data>
   <data name="Placeholder_Varnish" xml:space="preserve">
     <value>Wählen Sie eine Lackierung...</value>

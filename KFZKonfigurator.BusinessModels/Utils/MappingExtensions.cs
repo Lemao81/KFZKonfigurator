@@ -23,5 +23,15 @@ namespace KFZKonfigurator.BusinessModels.Utils
 
             return decimal.Parse(attribute?.Price ?? throw new ArgumentException("PriceAttribute is missing"));
         }
+
+        public static decimal GetPrice(this Varnish? varnish)
+        {
+            if (!varnish.HasValue) return 0M;
+
+            var member = typeof(Varnish).GetMember(varnish.ToString());
+            var attribute = member[0].GetCustomAttributes(typeof(PriceAttribute), false)[0] as PriceAttribute;
+
+            return decimal.Parse(attribute?.Price ?? throw new ArgumentException("PriceAttribute is missing"));
+        }
     }
 }

@@ -22,6 +22,16 @@ namespace KFZKonfigurator.Models
                     Value = value
                 });
             }
+
+            RimsOptions = new List<DropdownOption<Rims?>>();
+            foreach (var value in System.Enum.GetValues(typeof(Rims)).OfType<Rims>())
+            {
+                RimsOptions.Add(new DropdownOption<Rims?>
+                {
+                    Label = value.GetDisplay(),
+                    Value = value
+                });
+            }
         }
 
         public string Name { get; set; }
@@ -29,6 +39,7 @@ namespace KFZKonfigurator.Models
         public Varnish? Varnish { get; set; }
         public List<DropdownOption<Varnish?>> VarnishOptions { get; set; }
         public Rims? Rims { get; set; }
+        public List<DropdownOption<Rims?>> RimsOptions { get; set; }
         public List<Equipment> Equipments { get; set; }
         public decimal Price { get; set; }
         public string Email { get; set; }

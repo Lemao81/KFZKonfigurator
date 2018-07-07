@@ -18,17 +18,8 @@ namespace KFZKonfigurator.BusinessModels.Enum
         [Price("746")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         TenSpokes16,
 
-        [Price("900")] [Display(ResourceType = typeof(OptionsDisplayResx))]
-        FiveDoubleSpokes17,
-
-        [Price("250")] [Display(ResourceType = typeof(OptionsDisplayResx))]
-        FiveSpokes17,
-
-        [Price("340")] [Display(ResourceType = typeof(OptionsDisplayResx))]
-        FourSpokes17,
-
-        [Price("500")] [Display(ResourceType = typeof(OptionsDisplayResx))]
-        TenSpokes17,
+        [Price("280")] [Display(ResourceType = typeof(OptionsDisplayResx))]
+        FourMultiSpokes16,
 
         [Price("280")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         FiveDoubleSpokes18,
@@ -40,6 +31,9 @@ namespace KFZKonfigurator.BusinessModels.Enum
         FourSpokes18,
 
         [Price("500")] [Display(ResourceType = typeof(OptionsDisplayResx))]
-        TenSpokes18
+        TenSpokes18,
+
+        [Price("310")] [Display(ResourceType = typeof(OptionsDisplayResx))]
+        FourMultiSpokes18
     }
 }

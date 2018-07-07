@@ -8,7 +8,8 @@ namespace KFZKonfigurator.BusinessModels.Services
     {
         public decimal CalculatePrice(CarConfiguration carConfiguration)
         {
-            return carConfiguration.Equipments.Sum(_ => _.GetPrice()) + carConfiguration.Rims.GetPrice() + carConfiguration.EnginePower * 5;
+            return carConfiguration.Equipments.Sum(_ => _.GetPrice()) + carConfiguration.Rims.GetPrice() + carConfiguration.Varnish.GetPrice() +
+                   carConfiguration.EnginePower * 5;
         }
     }
 }
