@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFZKonfigurator.Binding", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFZKonfigurator.Base", "KFZKonfigurator.Base\KFZKonfigurator.Base.csproj", "{F7B4FC48-4918-4682-94CA-56F91CCAC959}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFZKonfigurator.Data", "KFZKonfigurator.Data\KFZKonfigurator.Data.csproj", "{AFED8C21-1A50-4F7C-88D7-FD057000B575}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFZKonfigurator.Business.Test", "KFZKonfigurator.Business.Test\KFZKonfigurator.Business.Test.csproj", "{B14EDBAA-F79D-424B-BA07-4F3AF4BA642F}"
 EndProject
 Global
@@ -43,10 +41,6 @@ Global
 		{F7B4FC48-4918-4682-94CA-56F91CCAC959}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7B4FC48-4918-4682-94CA-56F91CCAC959}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7B4FC48-4918-4682-94CA-56F91CCAC959}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AFED8C21-1A50-4F7C-88D7-FD057000B575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFED8C21-1A50-4F7C-88D7-FD057000B575}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFED8C21-1A50-4F7C-88D7-FD057000B575}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFED8C21-1A50-4F7C-88D7-FD057000B575}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B14EDBAA-F79D-424B-BA07-4F3AF4BA642F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B14EDBAA-F79D-424B-BA07-4F3AF4BA642F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B14EDBAA-F79D-424B-BA07-4F3AF4BA642F}.Release|Any CPU.ActiveCfg = Release|Any CPU

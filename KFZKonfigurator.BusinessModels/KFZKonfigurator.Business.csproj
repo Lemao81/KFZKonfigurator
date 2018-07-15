@@ -55,9 +55,6 @@
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="KonfiguratorDbContext.cs" />
     <Compile Include="Model\Configuration.cs" />
-    <Compile Include="Enum\EquipmentEnum.cs" />
-    <Compile Include="Enum\RimsEnum.cs" />
-    <Compile Include="Enum\VarnishEnum.cs" />
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Rims.cs" />
@@ -69,11 +66,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EquipmentResx.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\OptionsDisplayResx.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OptionsDisplayResx.resx</DependentUpon>
-    </Compile>
     <Compile Include="Resources\RimsResx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,7 +76,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VarnishResx.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utils\MappingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -101,10 +92,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EquipmentResx.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\OptionsDisplayResx.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>OptionsDisplayResx.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\RimsResx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RimsResx.Designer.cs</LastGenOutput>
@@ -114,8 +101,6 @@
       <LastGenOutput>VarnishResx.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
