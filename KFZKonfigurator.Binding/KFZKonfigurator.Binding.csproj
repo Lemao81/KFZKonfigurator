@@ -75,11 +75,13 @@
     <Compile Include="AbstractKnockoutBinderView.cs" />
     <Compile Include="Elements\Card.cs" />
     <Compile Include="Elements\Dropdown.cs" />
+    <Compile Include="Elements\MultiSelect.cs" />
+    <Compile Include="Elements\AbstractSelectElement.cs" />
     <Compile Include="Enum\CommitStrategy.cs" />
     <Compile Include="Enum\TextboxType.cs" />
     <Compile Include="Elements\AbstractFormElement.cs" />
     <Compile Include="KnockoutBinder.cs" />
-    <Compile Include="Models\DropdownOption.cs" />
+    <Compile Include="Models\SelectOption.cs" />
     <Compile Include="OngoingKnockoutBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Elements\Textbox.cs" />

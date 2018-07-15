@@ -4,7 +4,7 @@ using KFZKonfigurator.BusinessModels.Resources;
 
 namespace KFZKonfigurator.BusinessModels.Enum
 {
-    public enum Rims
+    public enum RimsEnum
     {
         [Price("532")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         FiveDoubleSpokes16,

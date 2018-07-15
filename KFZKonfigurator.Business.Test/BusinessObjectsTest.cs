@@ -15,16 +15,16 @@ namespace KFZKonfigurator.Business.Test
         public void Test_that_enums_have_price_attribute()
         {
             //Arrange
-            var equipmentType = typeof(Equipment);
-            var actualEquipment = Enum.GetValues(equipmentType).OfType<Equipment>()
+            var equipmentType = typeof(EquipmentEnum);
+            var actualEquipment = Enum.GetValues(equipmentType).OfType<EquipmentEnum>()
                 .All(_ => equipmentType.GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>() != null);
 
-            var rimsType = typeof(Rims);
-            var actualRims = Enum.GetValues(rimsType).OfType<Rims>()
+            var rimsType = typeof(RimsEnum);
+            var actualRims = Enum.GetValues(rimsType).OfType<RimsEnum>()
                 .All(_ => rimsType.GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>() != null);
 
-            var varnishType = typeof(Varnish);
-            var actualVarnish = Enum.GetValues(varnishType).OfType<Varnish>()
+            var varnishType = typeof(VarnishEnum);
+            var actualVarnish = Enum.GetValues(varnishType).OfType<VarnishEnum>()
                 .All(_ => varnishType.GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>() != null);
 
             //Assert
@@ -37,16 +37,16 @@ namespace KFZKonfigurator.Business.Test
         public void Test_that_enums_have_display_attribute()
         {
             //Arrange
-            var equipmentType = typeof(Equipment);
-            var actualEquipment = Enum.GetValues(equipmentType).OfType<Equipment>()
+            var equipmentType = typeof(EquipmentEnum);
+            var actualEquipment = Enum.GetValues(equipmentType).OfType<EquipmentEnum>()
                 .All(_ => equipmentType.GetMember(_.ToString())[0].GetCustomAttribute<DisplayAttribute>() != null);
 
-            var rimsType = typeof(Rims);
-            var actualRims = Enum.GetValues(rimsType).OfType<Rims>()
+            var rimsType = typeof(RimsEnum);
+            var actualRims = Enum.GetValues(rimsType).OfType<RimsEnum>()
                 .All(_ => rimsType.GetMember(_.ToString())[0].GetCustomAttribute<DisplayAttribute>() != null);
 
-            var varnishType = typeof(Varnish);
-            var actualVarnish = Enum.GetValues(varnishType).OfType<Varnish>()
+            var varnishType = typeof(VarnishEnum);
+            var actualVarnish = Enum.GetValues(varnishType).OfType<VarnishEnum>()
                 .All(_ => varnishType.GetMember(_.ToString())[0].GetCustomAttribute<DisplayAttribute>() != null);
 
             //Assert
@@ -59,24 +59,24 @@ namespace KFZKonfigurator.Business.Test
         public void Test_that_price_strings_are_valid()
         {
             //Arrange
-            var actualEquipment = Enum.GetValues(typeof(Equipment)).OfType<Equipment>()
+            var actualEquipment = Enum.GetValues(typeof(EquipmentEnum)).OfType<EquipmentEnum>()
                 .All(_ =>
                 {
-                    var attribute = typeof(Equipment).GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>();
+                    var attribute = typeof(EquipmentEnum).GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>();
                     return decimal.TryParse(attribute.Price, out var price);
                 });
 
-            var actualRims = Enum.GetValues(typeof(Rims)).OfType<Rims>()
+            var actualRims = Enum.GetValues(typeof(RimsEnum)).OfType<RimsEnum>()
                 .All(_ =>
                 {
-                    var attribute = typeof(Rims).GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>();
+                    var attribute = typeof(RimsEnum).GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>();
                     return decimal.TryParse(attribute.Price, out var price);
                 });
 
-            var actualVarnish = Enum.GetValues(typeof(Varnish)).OfType<Varnish>()
+            var actualVarnish = Enum.GetValues(typeof(VarnishEnum)).OfType<VarnishEnum>()
                 .All(_ =>
                 {
-                    var attribute = typeof(Varnish).GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>();
+                    var attribute = typeof(VarnishEnum).GetMember(_.ToString())[0].GetCustomAttribute<PriceAttribute>();
                     return decimal.TryParse(attribute.Price, out var price);
                 });
 

@@ -1,0 +1,56 @@
+﻿@using KFZKonfigurator.Binding
+@using KFZKonfigurator.Binding.Enum
+@using KFZKonfigurator.Models
+@using KFZKonfigurator.Resources
+@inherits AbstractKnockoutBinderView<ConfigurationViewModel>
+
+@{
+    var completeButtonId = "complete-button";
+}
+
+<section id="configuration">
+    <div class="container">
+        @using (var binder = NewKnockoutBinder(Model, Url.Action("Update", "Configuration"))) {
+            <div class="row">
+                <div class="col-sm">
+                    @binder.Bind(_ => _.Name, commitStrategy: CommitStrategy.OnFocusLost).ToTextbox().Placeholder(KonfiguratorResx.Placeholder_Name).Label(KonfiguratorResx.Label_Name).Build()
+                </div>
+                <div class="col-sm"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    @binder.Bind(_ => _.EnginePower).ToTextbox().Type(TextboxType.NumericInteger).MinValue(50).MaxValue(200).Placeholder(KonfiguratorResx.Placeholder_EnginePower).Label(KonfiguratorResx.Label_EnginePower).Build()
+                    @binder.Bind(_ => _.VarnishValue, _ => _.VarnishOptions).ToDropdown().Placeholder(KonfiguratorResx.Placeholder_Varnish).Label(KonfiguratorResx.Label_Varnish).Build()
+                    @binder.Bind(_ => _.RimsValue, _ => _.RimsOptions).ToDropdown().Placeholder(KonfiguratorResx.Placeholder_Rims).Label(KonfiguratorResx.Label_Rims).Build()
+                </div>
+                <div class="col-sm">
+                    @binder.Bind(_ => _.EquipmentValues, _ => _.EquipmentOptions).ToMultiSelect().Size(8).Label(KonfiguratorResx.Label_Equipment).Build()
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    @binder.Bind(_ => _.Email, commitStrategy: CommitStrategy.OnFocusLost).ToTextbox().Type(TextboxType.Email).Placeholder(KonfiguratorResx.Placeholder_Email).Label(KonfiguratorResx.Label_Email).Build()
+                </div>
+                <div class="col-sm">
+                    @binder.Bind(_ => _.Price, commitStrategy: CommitStrategy.None).ToCard().Label(KonfiguratorResx.Label_Price).Button(completeButtonId, Url.Action("Complete", "Configuration"), KonfiguratorResx.Caption_CompleteButton).Build()
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(function() {
+        $('#@completeButtonId').click(function() {
+            var completeUrl = $(this).data('url');
+
+            $.post(completeUrl).done(function(response) {
+                if (response.Error) {
+                    $.utils.showDialog('Fehler', response.Error);
+                } else {
+                    $('#configuration').html(response);
+                }
+            });
+        });
+    });
+</script>

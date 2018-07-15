@@ -1,4 +1,5 @@
 ﻿$.binding = $.binding || {};
+$.binding.CommitStrategy = $.binding.CommitStrategy || { ON_CHANGE: 0, ON_FOCUS_LOS: 1, NONE: 2 }
 
 $.binding.createKoViewModel = $.binding.createKoViewModel ||
     function(viewModelJs, commitStrategies, updateUrl) {
@@ -7,7 +8,7 @@ $.binding.createKoViewModel = $.binding.createKoViewModel ||
         var subscriptions = [];
         _.mapObject(viewModel,
             function(value, key) {
-                if (commitStrategies[key] === 0 && value.subscribe) {
+                if (commitStrategies[key] === $.binding.CommitStrategy.ON_CHANGE && value.subscribe) {
                     subscriptions.push(value.subscribe(function(newValue) {
                         newValue && update(key, newValue);
                     }));
@@ -15,7 +16,7 @@ $.binding.createKoViewModel = $.binding.createKoViewModel ||
             });
 
         viewModel.onFocusLost = function(propertyName) {
-            if (commitStrategies[propertyName] === 1) {
+            if (commitStrategies[propertyName] === $.binding.CommitStrategy.ON_FOCUS_LOS) {
                 update(propertyName, viewModel[propertyName]());
             }
         };

@@ -61,6 +61,15 @@ namespace KFZKonfigurator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Konfiguration abschließen.
+        /// </summary>
+        public static string Caption_CompleteButton {
+            get {
+                return ResourceManager.GetString("Caption_CompleteButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bestellen.
         /// </summary>
         public static string Caption_OrderButton {
@@ -70,7 +79,16 @@ namespace KFZKonfigurator.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fehler - Konfiguration konnte nicht angepasst werden.
+        ///   Looks up a localized string similar to Ein Fehler ist aufgetreten - Bestellung konnte nicht getätigt werden.
+        /// </summary>
+        public static string Error_OrderFailed {
+            get {
+                return ResourceManager.GetString("Error_OrderFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ein Fehler ist aufgetreten - Konfiguration konnte nicht angepasst werden.
         /// </summary>
         public static string Error_UpdateFailed {
             get {
@@ -93,6 +111,15 @@ namespace KFZKonfigurator.Resources {
         public static string Label_EnginePower {
             get {
                 return ResourceManager.GetString("Label_EnginePower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sonderausstattungen.
+        /// </summary>
+        public static string Label_Equipment {
+            get {
+                return ResourceManager.GetString("Label_Equipment", resourceCulture);
             }
         }
         
@@ -120,6 +147,15 @@ namespace KFZKonfigurator.Resources {
         public static string Label_Rims {
             get {
                 return ResourceManager.GetString("Label_Rims", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zusammenfassung.
+        /// </summary>
+        public static string Label_Summary {
+            get {
+                return ResourceManager.GetString("Label_Summary", resourceCulture);
             }
         }
         
@@ -174,6 +210,15 @@ namespace KFZKonfigurator.Resources {
         public static string Placeholder_Varnish {
             get {
                 return ResourceManager.GetString("Placeholder_Varnish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestellung wurde aufgegeben.
+        /// </summary>
+        public static string Success_Order {
+            get {
+                return ResourceManager.GetString("Success_Order", resourceCulture);
             }
         }
     }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace KFZKonfigurator.Binding.Elements
 {
@@ -16,33 +11,28 @@ namespace KFZKonfigurator.Binding.Elements
         private string _buttonId;
         private string _buttonCaption;
 
-        public Card(string id, string propertyName)
-        {
+        public Card(string id, string propertyName) {
             _id = id;
             _propertyName = propertyName;
         }
 
-        public Card Label(string label)
-        {
+        public Card Label(string label) {
             _label = label;
             return this;
         }
 
-        public Card Button(string id, string actionUrl, string caption)
-        {
+        public Card Button(string id, string actionUrl, string caption) {
             _actionUrl = actionUrl;
             _buttonId = id;
             _buttonCaption = caption;
             return this;
         }
 
-        public MvcHtmlString Build()
-        {
+        public MvcHtmlString Build() {
             return MvcHtmlString.Create(CreateElementBuilder().ToString());
         }
 
-        private TagBuilder CreateElementBuilder()
-        {
+        private TagBuilder CreateElementBuilder() {
             var divBuilder = new TagBuilder("div");
             divBuilder.AddCssClass("card");
             if (_id != null) divBuilder.MergeAttribute("id", _id);
@@ -60,8 +50,7 @@ namespace KFZKonfigurator.Binding.Elements
 
             bodyDivBuilder.InnerHtml = titleBuilder.ToString() + textBuilder;
 
-            if (_actionUrl != null)
-            {
+            if (_actionUrl != null) {
                 var buttonBuilder = new TagBuilder("a");
                 buttonBuilder.AddCssClass("btn btn-primary");
                 buttonBuilder.MergeAttribute("id", _buttonId);

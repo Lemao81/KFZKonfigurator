@@ -3,19 +3,23 @@ using System.Web.Mvc;
 
 namespace KFZKonfigurator.Binding
 {
-    public abstract class FormElement
+    public abstract class AbstractFormElement
     {
         protected string _id;
         protected string _propertyName;
         protected string _label;
+        protected string _placeholder;
 
-        public MvcHtmlString Build()
-        {
+        protected AbstractFormElement(string id, string propertyName) {
+            _id = id;
+            _propertyName = propertyName;
+        }
+
+        public MvcHtmlString Build() {
             return _label != null ? CreateFormGroup(CreateElementBuilder()) : MvcHtmlString.Create(CreateElementBuilder().ToString());
         }
 
-        private MvcHtmlString CreateFormGroup(TagBuilder elementBuilder)
-        {
+        private MvcHtmlString CreateFormGroup(TagBuilder elementBuilder) {
             var divBuilder = new TagBuilder("div");
             divBuilder.AddCssClass("form-group");
 

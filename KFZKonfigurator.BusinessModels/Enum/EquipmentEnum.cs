@@ -4,7 +4,7 @@ using KFZKonfigurator.BusinessModels.Resources;
 
 namespace KFZKonfigurator.BusinessModels.Enum
 {
-    public enum Equipment
+    public enum EquipmentEnum
     {
         [Price("520.99")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         AirConditioner,

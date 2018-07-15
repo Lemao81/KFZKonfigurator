@@ -5,7 +5,6 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using KFZKonfigurator.Base;
-using KFZKonfigurator.Base.Logging;
 using KFZKonfigurator.Binding.Enum;
 using KFZKonfigurator.Binding.Models;
 
@@ -20,8 +19,7 @@ namespace KFZKonfigurator.Binding
         private readonly string _updateUrl;
         private readonly Dictionary<string, CommitStrategy> _commitStrategies = new Dictionary<string, CommitStrategy>();
 
-        public KnockoutBinder(HtmlHelper htmlHelper, TViewModel viewModel, string updateUrl)
-        {
+        public KnockoutBinder(HtmlHelper htmlHelper, TViewModel viewModel, string updateUrl) {
             _htmlHelper = htmlHelper;
             _viewModel = viewModel;
             _updateUrl = updateUrl;
@@ -30,30 +28,32 @@ namespace KFZKonfigurator.Binding
         }
 
         public OngoingKnockoutBinding Bind<TProperty>(Expression<Func<TViewModel, TProperty>> property,
-            Expression<Func<TViewModel, List<DropdownOption<TProperty>>>> optionsProperty = null, CommitStrategy commitStrategy = CommitStrategy.OnChange)
-        {
+            Expression<Func<TViewModel, List<SelectOption>>> optionsProperty = null, CommitStrategy commitStrategy = CommitStrategy.OnChange) {
             var propertyName = property.GetPropertyName();
             _commitStrategies.Add(propertyName, commitStrategy);
 
             return new OngoingKnockoutBinding(propertyName, optionsProperty?.GetPropertyName());
         }
 
-        public void Dispose()
-        {
+        public OngoingKnockoutBinding Bind<TProperty>(Expression<Func<TViewModel, List<TProperty>>> property,
+            Expression<Func<TViewModel, List<SelectOption>>> optionsProperty = null, CommitStrategy commitStrategy = CommitStrategy.OnChange) {
+            var propertyName = property.GetPropertyName();
+            _commitStrategies.Add(propertyName, commitStrategy);
+
+            return new OngoingKnockoutBinding(propertyName, optionsProperty?.GetPropertyName());
+        }
+
+        public void Dispose() {
             SetClosingJavascript(_htmlHelper.ViewContext.Writer);
         }
 
-        private void SetStartingJavascript(TextWriter writer)
-        {
+        private void SetStartingJavascript(TextWriter writer) {
             writer.WriteLine($"<div id='{_id}'>");
         }
 
-        private void SetClosingJavascript(TextWriter writer)
-        {
+        private void SetClosingJavascript(TextWriter writer) {
             var viewModelSerialized = _javaScriptSerializer.Serialize(_viewModel);
             var commitStrategiesSerialized = _javaScriptSerializer.Serialize(_commitStrategies);
-            Logger.Info(viewModelSerialized);
-            Logger.Info(commitStrategiesSerialized);
 
             writer.WriteLine("</div>");
             writer.WriteLine("<script>");

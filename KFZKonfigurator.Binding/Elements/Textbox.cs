@@ -5,56 +5,44 @@ using KFZKonfigurator.Binding.Utils;
 
 namespace KFZKonfigurator.Binding
 {
-    public class Textbox : FormElement
+    public class Textbox : AbstractFormElement
     {
-        private string _placeholder;
         private TextboxType _type = TextboxType.Text;
         private int? _minValue;
         private int? _maxValue;
 
-        public Textbox(string id, string propertyName)
-        {
-            _id = id;
-            _propertyName = propertyName;
-        }
+        public Textbox(string id, string propertyName) : base(id, propertyName) { }
 
-        public Textbox Placeholder(string placeholder)
-        {
+        public Textbox Placeholder(string placeholder) {
             _placeholder = placeholder;
             return this;
         }
 
-        public Textbox Type(TextboxType type)
-        {
+        public Textbox Type(TextboxType type) {
             _type = type;
             return this;
         }
 
-        public Textbox Label(string label)
-        {
+        public Textbox Label(string label) {
             _label = label;
             return this;
         }
 
-        public Textbox MinValue(int minValue)
-        {
+        public Textbox MinValue(int minValue) {
             _minValue = minValue;
             return this;
         }
 
-        public Textbox MaxValue(int maxValue)
-        {
+        public Textbox MaxValue(int maxValue) {
             _maxValue = maxValue;
             return this;
         }
 
-        protected override TagBuilder CreateElementBuilder()
-        {
+        protected override TagBuilder CreateElementBuilder() {
             var inputBuilder = new TagBuilder("input");
             inputBuilder.AddCssClass("form-control");
 
-            var attributes = new Dictionary<string, string>
-            {
+            var attributes = new Dictionary<string, string> {
                 {"type", _type.MapToText()},
                 {"data-bind", $"textInput: {_propertyName}, event: {{ blur: function() {{ onFocusLost('{_propertyName}'); }} }}"}
             };

@@ -4,7 +4,7 @@ using KFZKonfigurator.BusinessModels.Resources;
 
 namespace KFZKonfigurator.BusinessModels.Enum
 {
-    public enum Varnish
+    public enum VarnishEnum
     {
         [Price("10")] [Display(ResourceType = typeof(OptionsDisplayResx))]
         Silver,

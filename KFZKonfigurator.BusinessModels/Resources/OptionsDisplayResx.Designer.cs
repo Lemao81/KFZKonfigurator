@@ -61,6 +61,114 @@ namespace KFZKonfigurator.BusinessModels.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ABS.
+        /// </summary>
+        internal static string Equipment_ABS {
+            get {
+                return ResourceManager.GetString("Equipment_ABS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Klimaanlage.
+        /// </summary>
+        internal static string Equipment_AirConditioner {
+            get {
+                return ResourceManager.GetString("Equipment_AirConditioner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All-Rad-Antrieb.
+        /// </summary>
+        internal static string Equipment_AllWheelDrive {
+            get {
+                return ResourceManager.GetString("Equipment_AllWheelDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Klimaautomatisierung.
+        /// </summary>
+        internal static string Equipment_ClimateAutomation {
+            get {
+                return ResourceManager.GetString("Equipment_ClimateAutomation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tempomat.
+        /// </summary>
+        internal static string Equipment_CruiseControl {
+            get {
+                return ResourceManager.GetString("Equipment_CruiseControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multifunktionslenkrad.
+        /// </summary>
+        internal static string Equipment_MultiFunctionSteeringWheel {
+            get {
+                return ResourceManager.GetString("Equipment_MultiFunctionSteeringWheel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigationsgerät.
+        /// </summary>
+        internal static string Equipment_NavigationDevice {
+            get {
+                return ResourceManager.GetString("Equipment_NavigationDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parksensoren.
+        /// </summary>
+        internal static string Equipment_ParkingSensors {
+            get {
+                return ResourceManager.GetString("Equipment_ParkingSensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sitzheizung.
+        /// </summary>
+        internal static string Equipment_SeatHeater {
+            get {
+                return ResourceManager.GetString("Equipment_SeatHeater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sound System.
+        /// </summary>
+        internal static string Equipment_SoundSystem {
+            get {
+                return ResourceManager.GetString("Equipment_SoundSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anhängerkupplung.
+        /// </summary>
+        internal static string Equipment_TowCoupling {
+            get {
+                return ResourceManager.GetString("Equipment_TowCoupling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xenon Licht.
+        /// </summary>
+        internal static string Equipment_XenonLight {
+            get {
+                return ResourceManager.GetString("Equipment_XenonLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 5fach-Doppelspeichen 16&quot;.
         /// </summary>
         internal static string Rims_FiveDoubleSpokes16 {

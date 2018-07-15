@@ -30,12 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,19 +52,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\CarConfiguration.cs" />
-    <Compile Include="Enum\Equipment.cs" />
-    <Compile Include="Enum\Rims.cs" />
-    <Compile Include="Enum\Varnish.cs" />
+    <Compile Include="DatabaseInitializer.cs" />
+    <Compile Include="KonfiguratorDbContext.cs" />
+    <Compile Include="Model\Configuration.cs" />
+    <Compile Include="Enum\EquipmentEnum.cs" />
+    <Compile Include="Enum\RimsEnum.cs" />
+    <Compile Include="Enum\VarnishEnum.cs" />
+    <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Rims.cs" />
+    <Compile Include="Model\Varnish.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Resources\EquipmentResx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquipmentResx.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\OptionsDisplayResx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OptionsDisplayResx.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\PriceCalculationService.cs" />
+    <Compile Include="Resources\RimsResx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RimsResx.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\VarnishResx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VarnishResx.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\MappingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,10 +97,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\EquipmentResx.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EquipmentResx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\OptionsDisplayResx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>OptionsDisplayResx.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\RimsResx.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RimsResx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\VarnishResx.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VarnishResx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -117,6 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Equipment_ABS" xml:space="preserve">
+    <value>ABS</value>
+  </data>
+  <data name="Equipment_AirConditioner" xml:space="preserve">
+    <value>Klimaanlage</value>
+  </data>
+  <data name="Equipment_AllWheelDrive" xml:space="preserve">
+    <value>All-Rad-Antrieb</value>
+  </data>
+  <data name="Equipment_ClimateAutomation" xml:space="preserve">
+    <value>Klimaautomatisierung</value>
+  </data>
+  <data name="Equipment_CruiseControl" xml:space="preserve">
+    <value>Tempomat</value>
+  </data>
+  <data name="Equipment_MultiFunctionSteeringWheel" xml:space="preserve">
+    <value>Multifunktionslenkrad</value>
+  </data>
+  <data name="Equipment_NavigationDevice" xml:space="preserve">
+    <value>Navigationsgerät</value>
+  </data>
+  <data name="Equipment_ParkingSensors" xml:space="preserve">
+    <value>Parksensoren</value>
+  </data>
+  <data name="Equipment_SeatHeater" xml:space="preserve">
+    <value>Sitzheizung</value>
+  </data>
+  <data name="Equipment_SoundSystem" xml:space="preserve">
+    <value>Sound System</value>
+  </data>
+  <data name="Equipment_TowCoupling" xml:space="preserve">
+    <value>Anhängerkupplung</value>
+  </data>
+  <data name="Equipment_XenonLight" xml:space="preserve">
+    <value>Xenon Licht</value>
+  </data>
   <data name="Rims_FiveDoubleSpokes16" xml:space="preserve">
     <value>5fach-Doppelspeichen 16"</value>
   </data>

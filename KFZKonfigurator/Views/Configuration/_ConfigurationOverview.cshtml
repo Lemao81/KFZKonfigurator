@@ -1,0 +1,94 @@
+﻿@model KFZKonfigurator.Models.ConfigurationOverviewViewModel
+@using KFZKonfigurator.Resources
+
+<div class="container">
+    <div class="row">
+        @KonfiguratorResx.Label_Summary
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            @KonfiguratorResx.Label_Name
+        </div>
+        <div class="col-sm">
+            @Model.Name
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            @KonfiguratorResx.Label_EnginePower
+        </div>
+        <div class="col-sm">
+            @Model.EnginePower
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            @KonfiguratorResx.Label_Varnish
+        </div>
+        <div class="col-sm">
+            @Model.VarnishLabel
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            @KonfiguratorResx.Label_Rims
+        </div>
+        <div class="col-sm">
+            @Model.RimsLabel
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            @KonfiguratorResx.Label_Equipment
+        </div>
+        <div class="col-sm">
+            <ul>
+                @foreach (var equipment in Model.EquipmentLabels) {
+                    <li>@equipment</li>
+                }
+            </ul>
+            @Model.RimsLabel
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            @KonfiguratorResx.Label_Email
+        </div>
+        <div class="col-sm">
+            @Model.Email
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            @KonfiguratorResx.Label_Price
+        </div>
+        <div class="col-sm">
+            @Model.Price
+        </div>
+    </div>
+
+    <div class="row">
+        <button id="order-button" class="btn btn-primary">@KonfiguratorResx.Caption_OrderButton</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $('#order-button').click(function() {
+            $.post('@Url.Action("Order", "Configuration")').done(function(response) {
+                if (response.Error) {
+                    $.utils.showDialog('Fehler', response.Error);
+                } else if (response.Success) {
+                    $.utils.showDialog('', response.Success);
+                }
+            });
+        });
+    });
+</script>

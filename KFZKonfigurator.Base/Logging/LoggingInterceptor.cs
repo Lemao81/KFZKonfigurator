@@ -8,26 +8,22 @@ namespace KFZKonfigurator.Base.Logging
     {
         private ILog _logger;
 
-        public void Intercept(IInvocation invocation)
-        {
+        public void Intercept(IInvocation invocation) {
             if (_logger == null)
                 _logger = LogManager.GetLogger(invocation.Method.DeclaringType?.FullName ?? "Logger");
 
             _logger.Info(GetMethodInfo(invocation));
 
-            try
-            {
+            try {
                 invocation.Proceed();
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 _logger.Error(GetMethodInfo(invocation), e);
                 throw e;
             }
         }
 
-        private static string GetMethodInfo(IInvocation invocation)
-        {
+        private static string GetMethodInfo(IInvocation invocation) {
             return $"{invocation.Method.Name}({string.Join(", ", invocation.Arguments)})";
         }
     }

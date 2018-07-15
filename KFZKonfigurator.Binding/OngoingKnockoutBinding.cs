@@ -23,6 +23,11 @@ namespace KFZKonfigurator.Binding
             return new Textbox(id, _propertyName);
         }
 
+        public MultiSelect ToMultiSelect(string id = null)
+        {
+            return new MultiSelect(id, _propertyName, _optionsPropertyName);
+        }
+
         public Card ToCard(string id = null)
         {
             return new Card(id, _propertyName);

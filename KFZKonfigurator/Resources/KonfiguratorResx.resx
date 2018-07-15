@@ -117,17 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Caption_CompleteButton" xml:space="preserve">
+    <value>Konfiguration abschließen</value>
+  </data>
   <data name="Caption_OrderButton" xml:space="preserve">
     <value>Bestellen</value>
   </data>
+  <data name="Error_OrderFailed" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten - Bestellung konnte nicht getätigt werden</value>
+  </data>
   <data name="Error_UpdateFailed" xml:space="preserve">
-    <value>Fehler - Konfiguration konnte nicht angepasst werden</value>
+    <value>Ein Fehler ist aufgetreten - Konfiguration konnte nicht angepasst werden</value>
   </data>
   <data name="Label_Email" xml:space="preserve">
     <value>Email Adresse</value>
   </data>
   <data name="Label_EnginePower" xml:space="preserve">
     <value>Motorleistung</value>
+  </data>
+  <data name="Label_Equipment" xml:space="preserve">
+    <value>Sonderausstattungen</value>
   </data>
   <data name="Label_Name" xml:space="preserve">
     <value>Name</value>
@@ -137,6 +146,9 @@
   </data>
   <data name="Label_Rims" xml:space="preserve">
     <value>Felgen</value>
+  </data>
+  <data name="Label_Summary" xml:space="preserve">
+    <value>Zusammenfassung</value>
   </data>
   <data name="Label_Varnish" xml:space="preserve">
     <value>Lackierung</value>
@@ -155,5 +167,8 @@
   </data>
   <data name="Placeholder_Varnish" xml:space="preserve">
     <value>Wählen Sie eine Lackierung...</value>
+  </data>
+  <data name="Success_Order" xml:space="preserve">
+    <value>Bestellung wurde aufgegeben</value>
   </data>
 </root>
