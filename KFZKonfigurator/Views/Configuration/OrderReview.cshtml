@@ -1,0 +1,16 @@
+﻿@using KFZKonfigurator.Resources
+@model KFZKonfigurator.Models.ConfigurationOverviewViewModel
+
+@{
+    ViewBag.Title = "Konfigurator";
+}
+
+<br/><br/>
+@if (Model.IsValidOrder) {
+    @Html.Partial("_ConfigurationOverview", Model)
+}
+else {
+    <p>
+        @KonfiguratorResx.Error_Invalid_OrderId
+    </p>
+}

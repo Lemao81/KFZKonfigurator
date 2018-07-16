@@ -123,6 +123,15 @@
   <data name="Caption_OrderButton" xml:space="preserve">
     <value>Bestellen</value>
   </data>
+  <data name="Email_Body_Format" xml:space="preserve">
+    <value>Ihre Kfz-Bestellung (Name: {1}) ist bei uns eingegangen. Gesamtpreis: {2}&lt;br/&gt;&lt;br/&gt;Mit folgendem Link können Sie die Zusammenfassung der Bestellung jederzeit einsehen:&lt;br/&gt;&lt;br/&gt;&lt;a href="{3}{4}"&gt;{3}{4}&lt;/a&gt;</value>
+  </data>
+  <data name="Email_Subject_Format" xml:space="preserve">
+    <value>Kfz-Konfigurator Bestellung '{0}'</value>
+  </data>
+  <data name="Error_Invalid_OrderId" xml:space="preserve">
+    <value>Es existiert keine Bestellung mit der angegebenen Id</value>
+  </data>
   <data name="Error_OrderFailed" xml:space="preserve">
     <value>Ein Fehler ist aufgetreten - Bestellung konnte nicht getätigt werden</value>
   </data>
@@ -140,6 +149,9 @@
   </data>
   <data name="Label_Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="Label_Ordered" xml:space="preserve">
+    <value>Bestellt am</value>
   </data>
   <data name="Label_Price" xml:space="preserve">
     <value>Preis</value>

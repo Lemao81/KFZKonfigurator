@@ -7,7 +7,7 @@ namespace KFZKonfigurator.BusinessModels.Model
         public Guid OrderId { get; set; }
         public DateTime? Created { get; set; }
         public decimal? Price { get; set; }
-        public User User { get; set; }
-        public Configuration Configuration { get; set; }
+        public virtual User User { get; set; }
+        public virtual Configuration Configuration { get; set; }
     }
 }

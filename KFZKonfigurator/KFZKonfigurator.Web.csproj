@@ -196,13 +196,16 @@
     <Content Include="Scripts\Framework\umd\popper.min.js" />
     <Content Include="Scripts\Framework\underscore.js" />
     <Content Include="Scripts\Framework\underscore.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
+    <Compile Include="Controllers\WebApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,6 +219,7 @@
     </Compile>
     <Compile Include="Services\ConfigurationRenderer.cs" />
     <Compile Include="Services\DiControllerFactory.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\PriceCalculationService.cs" />
     <Compile Include="Services\UpdateService.cs" />
@@ -242,6 +246,7 @@
     <Content Include="Scripts\Framework\popper-utils.min.js.map" />
     <Content Include="Scripts\Framework\popper-utils.js.map" />
     <Content Include="Views\Configuration\_ConfigurationOverview.cshtml" />
+    <Content Include="Views\Configuration\OrderReview.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

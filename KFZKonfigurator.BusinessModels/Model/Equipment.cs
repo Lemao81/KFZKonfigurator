@@ -13,6 +13,6 @@ namespace KFZKonfigurator.BusinessModels.Model
 
         public decimal? PriceEuro { get; set; }
         public decimal? PricePound { get; set; }
-        public ICollection<Configuration> Configurations { get; set; }
+        public virtual ICollection<Configuration> Configurations { get; set; }
     }
 }

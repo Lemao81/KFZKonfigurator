@@ -35,10 +35,12 @@ namespace KFZKonfigurator
 
             container.Register(Component.For<LoggingInterceptor>().ImplementedBy<LoggingInterceptor>());
             container.Register(Component.For<KonfiguratorDbContext>().ImplementedBy<KonfiguratorDbContext>().LifeStyle.Transient);
-            container.Register(Component.For<OrderService>().ImplementedBy<OrderService>());
             container.Register(Component.For<ConfigurationController>().Interceptors<LoggingInterceptor>().ImplementedBy<ConfigurationController>().LifeStyle.Transient);
+            container.Register(Component.For<WebApiController>().Interceptors<LoggingInterceptor>().ImplementedBy<WebApiController>().LifeStyle.Transient);
+            container.Register(Component.For<OrderService>().ImplementedBy<OrderService>());
             container.Register(Component.For<PriceCalculationService>().Interceptors<LoggingInterceptor>().ImplementedBy<PriceCalculationService>());
             container.Register(Component.For<UpdateService>().Interceptors<LoggingInterceptor>().ImplementedBy<UpdateService>());
+            container.Register(Component.For<EmailService>().Interceptors<LoggingInterceptor>().ImplementedBy<EmailService>());
         }
     }
 }

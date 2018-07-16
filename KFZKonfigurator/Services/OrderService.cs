@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using KFZKonfigurator.Base.Logging;
 using KFZKonfigurator.BusinessModels;
 using KFZKonfigurator.BusinessModels.Model;
 using KFZKonfigurator.Models;
@@ -8,6 +9,7 @@ using KFZKonfigurator.Utils;
 
 namespace KFZKonfigurator.Services
 {
+    [Log]
     public class OrderService
     {
         private readonly KonfiguratorDbContext _dbContext;
@@ -16,10 +18,10 @@ namespace KFZKonfigurator.Services
             _dbContext = dbContext;
         }
 
-        public void Order(ConfigurationViewModel configurationViewModel) {
-            var configurations = _dbContext.Configurations;
-            var configuration = configurationViewModel.MapToBusinessModel(_dbContext);
-            configuration.ConfigurationId = Guid.NewGuid();
+        public Guid Order(ConfigurationViewModel configurationViewModel) {
+            var configurationBo = configurationViewModel.MapToBusinessObject(_dbContext);
+
+            configurationBo.ConfigurationId = Guid.NewGuid();
 
             var user = _dbContext.Users.SingleOrDefault(_ => _.Email == configurationViewModel.Email) ?? new User {
                 UserId = Guid.NewGuid(),
@@ -29,17 +31,20 @@ namespace KFZKonfigurator.Services
             var order = new Order {
                 OrderId = Guid.NewGuid(),
                 Created = DateTime.Now,
-                Configuration = configuration,
-                User = user
+                Configuration = configurationBo,
+                User = user,
+                Price = configurationViewModel?.Price
             };
 
-            configuration.Order = order;
+            configurationBo.Order = order;
 
-            _dbContext.Configurations.Add(configuration);
+            _dbContext.Configurations.Add(configurationBo);
             _dbContext.Users.AddOrUpdate(user);
             _dbContext.Orders.Add(order);
 
             _dbContext.SaveChanges();
+
+            return order.OrderId;
         }
     }
 }

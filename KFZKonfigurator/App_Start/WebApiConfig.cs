@@ -16,7 +16,7 @@ namespace KFZKonfigurator
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "order/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

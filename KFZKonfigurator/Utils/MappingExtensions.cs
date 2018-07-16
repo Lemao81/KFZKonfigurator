@@ -17,13 +17,13 @@ namespace KFZKonfigurator.Utils
             };
         }
 
-        public static Configuration MapToBusinessModel(this ConfigurationViewModel configuration, KonfiguratorDbContext dbContext) {
+        public static Configuration MapToBusinessObject(this ConfigurationViewModel configuration, KonfiguratorDbContext dbContext) {
             return new Configuration {
                 EnginePower = configuration.EnginePower,
-                Equipments = configuration.EquipmentValues.Select(e => dbContext.Equipments.SingleOrDefault(_ => _.EquipmentId == e)).ToList(),
+                Equipments = configuration.EquipmentValues.Select(e => dbContext.Equipments.Single(_ => _.EquipmentId == e)).ToList(),
                 Name = configuration.Name,
-                Rims = dbContext.Rimses.SingleOrDefault(_ => _.RimsId == configuration.RimsValue),
-                Varnish = dbContext.Varnishes.SingleOrDefault(_ => _.VarnishId == configuration.VarnishValue)
+                Rims = configuration.RimsValue.HasValue ? dbContext.Rimses.Single(_ => _.RimsId == configuration.RimsValue) : null,
+                Varnish = configuration.VarnishValue.HasValue ? dbContext.Varnishes.Single(_ => _.VarnishId == configuration.VarnishValue) : null
             };
         }
     }
