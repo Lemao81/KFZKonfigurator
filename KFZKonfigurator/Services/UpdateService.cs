@@ -11,12 +11,6 @@ namespace KFZKonfigurator.Services
     [Log]
     public class UpdateService
     {
-        private readonly PriceCalculationService _priceCalculationService;
-
-        public UpdateService(PriceCalculationService priceCalculationService) {
-            _priceCalculationService = priceCalculationService;
-        }
-
         public void Update(ConfigurationViewModel configuration, string propertyName, object newValue) {
             switch (propertyName) {
                 case nameof(ConfigurationViewModel.EquipmentValues):
@@ -33,8 +27,6 @@ namespace KFZKonfigurator.Services
                         new[] {configuration, propertyInfo.AsLambdaExpression(), ((Array) newValue)?.GetValue(0)});
                     break;
             }
-
-            configuration.Price = _priceCalculationService.CalculatePrice(configuration);
         }
 
         private static void UpdateGeneric<TModel, TProperty>(TModel model, Expression<Func<TModel, TProperty>> property, object newValue) {

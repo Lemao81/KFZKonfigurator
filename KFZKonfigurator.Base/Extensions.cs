@@ -92,5 +92,9 @@ namespace KFZKonfigurator.Base
         public static decimal ToDecimal(this double value) {
             return (decimal) value;
         }
+
+        public static string GetPriceLabel(this decimal? price) {
+            return $"{price:C} {Display.GetCurrencySymbol()}";
+        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using KFZKonfigurator.Base;
@@ -20,9 +19,11 @@ namespace KFZKonfigurator.Controllers
         private readonly KonfiguratorDbContext _dbContext;
         private readonly PriceCalculationService _priceCalculationService;
         private readonly EmailService _emailService;
+        private readonly ViewModelService _viewModelService;
 
         public ConfigurationController(PriceCalculationService priceCalculationService, UpdateService updateService, OrderService orderService, KonfiguratorDbContext dbContext,
-            EmailService emailService) {
+            EmailService emailService, ViewModelService viewModelService) {
+            _viewModelService = viewModelService;
             _emailService = emailService;
             _priceCalculationService = priceCalculationService;
             _dbContext = dbContext;
@@ -31,8 +32,9 @@ namespace KFZKonfigurator.Controllers
         }
 
         public ActionResult Index() {
-            var newConfiguration = new ConfigurationViewModel(_dbContext);
-            newConfiguration.Price = _priceCalculationService.CalculatePrice(newConfiguration);
+            var newConfiguration = _viewModelService.CreateConfigurationViewModel(_dbContext);
+            newConfiguration.Price = _priceCalculationService.CalculatePrice(enginePower: newConfiguration.EnginePower);
+
             Session[CONFIGURATION_SESSION_KEY] = newConfiguration;
 
             return View(newConfiguration);
@@ -43,7 +45,13 @@ namespace KFZKonfigurator.Controllers
                 var configuration = Session[CONFIGURATION_SESSION_KEY] as ConfigurationViewModel;
                 _updateService.Update(configuration, propertyName, newValue);
 
-                return Json(new {configuration?.Price});
+                var equipments = _dbContext.FindEquipmentsByIds(configuration.EquipmentValues);
+                var rims = _dbContext.FindRimsById(configuration.RimsValue);
+                var varnish = _dbContext.FindVarnishById(configuration.VarnishValue);
+
+                configuration.Price = _priceCalculationService.CalculatePrice(equipments, rims, varnish, configuration.EnginePower);
+
+                return Json(new {configuration.PriceLabel});
             }
             catch (Exception e) {
                 Logger.Error(e);
@@ -53,22 +61,9 @@ namespace KFZKonfigurator.Controllers
 
         public ActionResult Complete() {
             var configuration = Session[CONFIGURATION_SESSION_KEY] as ConfigurationViewModel;
+            if (configuration == null) Json(new {Error = KonfiguratorResx.Error_CompletionFailed});
 
-            var rimsLabel = configuration.RimsValue.HasValue ? Display.GetValue(_ => _.Name, _dbContext.Rimses.Single(_ => _.RimsId == configuration.RimsValue)) : string.Empty;
-            var varnishLabel = configuration.VarnishValue.HasValue ? Display.GetValue(_ => _.Name, _dbContext.Varnishes.Single(_ => _.VarnishId == configuration.VarnishValue)) : string.Empty;
-            var equipmentLabels = configuration.EquipmentValues.Select(value => _dbContext.Equipments.Single(_ => _.EquipmentId == value))
-                .Select(equipment => Display.GetValue(_ => _.Name, equipment)).ToList();
-
-            var viewModel = new ConfigurationOverviewViewModel {
-                Name = configuration.Name,
-                Email = configuration.Email,
-                Price = configuration.Price,
-                EnginePower = configuration.EnginePower,
-                RimsLabel = rimsLabel,
-                VarnishLabel = varnishLabel,
-                EquipmentLabels = equipmentLabels,
-                IsOrdered = false
-            };
+            var viewModel = _viewModelService.CreateConfigurationOverviewViewModel(configuration);
             return PartialView("_ConfigurationOverview", viewModel);
         }
 
@@ -86,30 +81,8 @@ namespace KFZKonfigurator.Controllers
         }
 
         public ActionResult OrderReview(Guid orderId) {
-            var order = _dbContext.Orders.SingleOrDefault(_ => _.OrderId == orderId);
-            ConfigurationOverviewViewModel viewModel;
-
-            if (order != null) {
-                var rimsLabel = Display.GetValue(_ => _.Name, order.Configuration.Rims);
-                var varnishLabel = Display.GetValue(_ => _.Name, order.Configuration.Varnish);
-                var equipmentLabels = order.Configuration.Equipments.Select(equipment => Display.GetValue(_ => _.Name, equipment)).ToList();
-
-                viewModel = new ConfigurationOverviewViewModel {
-                    Name = order.Configuration.Name,
-                    Created = order.Created,
-                    Email = order.User.Email,
-                    Price = order.Price,
-                    EnginePower = order.Configuration.EnginePower ?? 0,
-                    RimsLabel = rimsLabel,
-                    VarnishLabel = varnishLabel,
-                    EquipmentLabels = equipmentLabels,
-                    IsOrdered = true,
-                    IsValidOrder = true
-                };
-            }
-            else {
-                viewModel = new ConfigurationOverviewViewModel {IsValidOrder = false};
-            }
+            var order = _dbContext.FindOrderById(orderId);
+            var viewModel = _viewModelService.CreateConfigurationOverviewViewModel(order);
 
             return View(viewModel);
         }

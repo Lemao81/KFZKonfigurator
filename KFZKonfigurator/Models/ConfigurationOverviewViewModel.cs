@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using KFZKonfigurator.Base;
 
 namespace KFZKonfigurator.Models
 {
@@ -11,6 +12,7 @@ namespace KFZKonfigurator.Models
         public string RimsLabel { get; set; }
         public List<string> EquipmentLabels { get; set; }
         public decimal? Price { get; set; }
+        public string PriceLabel => Price.GetPriceLabel();
         public DateTime? Created { get; set; }
         public string Email { get; set; }
         public bool IsOrdered { get; set; }

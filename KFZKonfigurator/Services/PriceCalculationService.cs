@@ -1,24 +1,18 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using KFZKonfigurator.Base.Logging;
-using KFZKonfigurator.BusinessModels;
-using KFZKonfigurator.Models;
+using KFZKonfigurator.BusinessModels.Model;
 
 namespace KFZKonfigurator.Services
 {
     [Log]
     public class PriceCalculationService
     {
-        private readonly KonfiguratorDbContext _dbContext;
-
-        public PriceCalculationService(KonfiguratorDbContext dbContext) {
-            _dbContext = dbContext;
-        }
-
-        public decimal CalculatePrice(ConfigurationViewModel configuration) {
-            var equipmentPrice = configuration.EquipmentValues?.Select(e => _dbContext.Equipments.Single(_ => _.EquipmentId == e)).Sum(_ => _.PriceEuro) ?? decimal.Zero;
-            var rimsesPrice = configuration.RimsValue.HasValue ? _dbContext.Rimses.Single(_ => _.RimsId == configuration.RimsValue).PriceEuro ?? decimal.Zero : decimal.Zero;
-            var varnishesPrice = configuration.VarnishValue.HasValue ? _dbContext.Varnishes.Single(_ => _.VarnishId == configuration.VarnishValue).PriceEuro ?? decimal.Zero : decimal.Zero;
-            var engingePowerPrice = configuration.EnginePower * 5;
+        public decimal CalculatePrice(IEnumerable<Equipment> equipments = null, Rims rims = null, Varnish varnish = null, int? enginePower = null) {
+            var equipmentPrice = equipments?.Sum(_ => _.PriceEuro) ?? decimal.Zero;
+            var rimsesPrice = rims?.PriceEuro ?? decimal.Zero;
+            var varnishesPrice = varnish?.PriceEuro ?? decimal.Zero;
+            var engingePowerPrice = (enginePower ?? 0) * 5;
 
             return equipmentPrice + rimsesPrice + varnishesPrice + engingePowerPrice;
         }
