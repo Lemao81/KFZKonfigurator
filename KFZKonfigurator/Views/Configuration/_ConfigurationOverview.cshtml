@@ -2,91 +2,101 @@
 @using KFZKonfigurator.Resources
 
 <div class="container">
-    <div class="row">
-        @KonfiguratorResx.Label_Summary
-    </div>
+    <br/>
 
-    <div class="row">
-        <div class="col-sm">
-            @KonfiguratorResx.Label_Name
-        </div>
-        <div class="col-sm">
-            @Model.Name
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm">
-            @KonfiguratorResx.Label_EnginePower
-        </div>
-        <div class="col-sm">
-            @Model.EnginePower
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm">
-            @KonfiguratorResx.Label_Varnish
-        </div>
-        <div class="col-sm">
-            @Model.VarnishLabel
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm">
-            @KonfiguratorResx.Label_Rims
-        </div>
-        <div class="col-sm">
-            @Model.RimsLabel
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm">
-            @KonfiguratorResx.Label_Equipment
-        </div>
-        <div class="col-sm">
-            <ul>
-                @foreach (var equipment in Model.EquipmentLabels) {
-                    <li>@equipment</li>
-                }
-            </ul>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm">
-            @KonfiguratorResx.Label_Email
-        </div>
-        <div class="col-sm">
-            @Model.Email
-        </div>
-    </div>
-
-    @if (Model.IsOrdered && Model.Created.HasValue) {
-        <div class="row">
-            <div class="col-sm">
-                @KonfiguratorResx.Label_Ordered
-            </div>
-            <div class="col-sm">
-                @Model.Created.Value
+    <div class="summary-table">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h4>
+                    @KonfiguratorResx.Label_Summary
+                </h4>
             </div>
         </div>
-    }
 
-    <div class="row">
-        <div class="col-sm">
-            @KonfiguratorResx.Label_Price
+        <div class="row justify-content-center mt-3">
+            <div class="col-3">
+                @KonfiguratorResx.Label_Name
+            </div>
+            <div class="col-3">
+                @Model.Name
+            </div>
         </div>
-        <div class="col-sm">
-            @Model.Price
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-3">
+                @KonfiguratorResx.Label_EnginePower
+            </div>
+            <div class="col-3">
+                @Model.EnginePower
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-3">
+                @KonfiguratorResx.Label_Varnish
+            </div>
+            <div class="col-3">
+                @Model.VarnishLabel
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-3">
+                @KonfiguratorResx.Label_Rims
+            </div>
+            <div class="col-3">
+                @Model.RimsLabel
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-3">
+                @KonfiguratorResx.Label_Equipment
+            </div>
+            <div class="col-3">
+                <ul class="list-group list-group-flush">
+                    @foreach (var equipment in Model.EquipmentLabels) {
+                        <li class="list-group-item">@equipment</li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-3">
+                @KonfiguratorResx.Label_Email
+            </div>
+            <div class="col-3">
+                @Model.Email
+            </div>
+        </div>
+
+        @if (Model.IsOrdered && Model.Created.HasValue) {
+            <div class="row justify-content-center mt-2">
+                <div class="col-3">
+                    @KonfiguratorResx.Label_Ordered
+                </div>
+                <div class="col-3">
+                    @Model.Created.Value
+                </div>
+            </div>
+        }
+
+        <div class="row justify-content-center mt-2">
+            <div class="col-3">
+                @KonfiguratorResx.Label_Price
+            </div>
+            <div class="col-3">
+                @Model.PriceLabel
+            </div>
         </div>
     </div>
 
     @if (!Model.IsOrdered) {
-        <div class="row">
-            <button id="order-button" class="btn btn-primary">@KonfiguratorResx.Caption_OrderButton</button>
+        <div class="row justify-content-center mt-5">
+            <div class="col-3">
+                <button id="order-button" class="btn btn-primary">@KonfiguratorResx.Caption_OrderButton</button>
+            </div>
         </div>
     }
 </div>
