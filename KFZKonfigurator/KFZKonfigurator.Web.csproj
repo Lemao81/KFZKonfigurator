@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KFZKonfigurator</RootNamespace>
     <AssemblyName>KFZKonfigurator</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -198,6 +198,9 @@
     <Content Include="Scripts\Framework\umd\popper.min.js" />
     <Content Include="Scripts\Framework\underscore.js" />
     <Content Include="Scripts\Framework\underscore.min.js" />
+    <None Include="Scripts\Framework\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Framework\jquery.validate.js" />
+    <Content Include="Scripts\Framework\jquery.validate.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

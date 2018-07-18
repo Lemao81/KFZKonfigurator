@@ -11,47 +11,52 @@
 <section id="configuration">
     <div class="container">
         @using (var binder = NewKnockoutBinder(Model, Url.Action("Update", "Configuration"))) {
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    @binder.Bind(_ => _.Name, commitStrategy: CommitStrategy.OnFocusLost).ToTextbox().Placeholder(KonfiguratorResx.Placeholder_Name).Label(KonfiguratorResx.Label_Name).Build()
+            <form id="configuration-form">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        @binder.Bind(_ => _.Name, commitStrategy: CommitStrategy.OnFocusLost).ToTextbox().Placeholder(KonfiguratorResx.Placeholder_Name).Required.Label(KonfiguratorResx.Label_Name).Build()
+                    </div>
+                    <div class="col-4">
+                        @binder.Bind(_ => _.Email, commitStrategy: CommitStrategy.OnFocusLost).ToTextbox().Type(TextboxType.Email).Placeholder(KonfiguratorResx.Placeholder_Email).Required.Label(KonfiguratorResx.Label_Email).Build()
+                    </div>
                 </div>
-                <div class="col-4">
-                    @binder.Bind(_ => _.Email, commitStrategy: CommitStrategy.OnFocusLost).ToTextbox().Type(TextboxType.Email).Placeholder(KonfiguratorResx.Placeholder_Email).Label(KonfiguratorResx.Label_Email).Build()
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        @binder.Bind(_ => _.EnginePower).ToTextbox().Type(TextboxType.NumericInteger).MinValue(50).MaxValue(200).Placeholder(KonfiguratorResx.Placeholder_EnginePower).Label(KonfiguratorResx.Label_EnginePower).Build()
+                        @binder.Bind(_ => _.VarnishValue, _ => _.VarnishOptions).ToDropdown().Placeholder(KonfiguratorResx.Placeholder_Varnish).Label(KonfiguratorResx.Label_Varnish).Build()
+                        @binder.Bind(_ => _.RimsValue, _ => _.RimsOptions).ToDropdown().Placeholder(KonfiguratorResx.Placeholder_Rims).Label(KonfiguratorResx.Label_Rims).Build()
+                    </div>
+                    <div class="col-4">
+                        @binder.Bind(_ => _.EquipmentValues, _ => _.EquipmentOptions).ToMultiSelect().Size(9).Label(KonfiguratorResx.Label_Equipment).Build()
+                    </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    @binder.Bind(_ => _.EnginePower).ToTextbox().Type(TextboxType.NumericInteger).MinValue(50).MaxValue(200).Placeholder(KonfiguratorResx.Placeholder_EnginePower).Label(KonfiguratorResx.Label_EnginePower).Build()
-                    @binder.Bind(_ => _.VarnishValue, _ => _.VarnishOptions).ToDropdown().Placeholder(KonfiguratorResx.Placeholder_Varnish).Label(KonfiguratorResx.Label_Varnish).Build()
-                    @binder.Bind(_ => _.RimsValue, _ => _.RimsOptions).ToDropdown().Placeholder(KonfiguratorResx.Placeholder_Rims).Label(KonfiguratorResx.Label_Rims).Build()
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        @binder.Bind(_ => _.PriceLabel, commitStrategy: CommitStrategy.None).ToCard().Label(KonfiguratorResx.Label_Price).Button(completeButtonId, Url.Action("Complete", "Configuration"), KonfiguratorResx.Caption_CompleteButton).Build()
+                    </div>
+                    <div class="col-4">
+                    </div>
                 </div>
-                <div class="col-4">
-                    @binder.Bind(_ => _.EquipmentValues, _ => _.EquipmentOptions).ToMultiSelect().Size(9).Label(KonfiguratorResx.Label_Equipment).Build()
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    @binder.Bind(_ => _.PriceLabel, commitStrategy: CommitStrategy.None).ToCard().Label(KonfiguratorResx.Label_Price).Button(completeButtonId, Url.Action("Complete", "Configuration"), KonfiguratorResx.Caption_CompleteButton).Build()
-                </div>
-                <div class="col-4">
-                </div>
-            </div>
+            </form>
         }
     </div>
 </section>
 
 <script type="text/javascript">
     $(function() {
-        $('#@completeButtonId').click(function() {
-            var completeUrl = $(this).data('url');
+        var completeUrl = $('#@completeButtonId').data('url');
 
-            $.post(completeUrl).done(function(response) {
-                if (response.Error) {
-                    $.utils.showDialog('Fehler', response.Error);
-                } else {
-                    $('#configuration').html(response);
-                }
+        $(document).on('submit',
+            function (event) {
+                event.preventDefault();
+
+                $.post(completeUrl).done(function(response) {
+                    if (response.Error) {
+                        $.utils.showDialog('Fehler', response.Error);
+                    } else {
+                        $('#configuration').html(response);
+                    }
+                });
             });
-        });
     });
 </script>

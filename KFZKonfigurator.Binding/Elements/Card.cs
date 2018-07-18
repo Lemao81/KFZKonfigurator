@@ -51,8 +51,9 @@ namespace KFZKonfigurator.Binding.Elements
             bodyDivBuilder.InnerHtml = titleBuilder.ToString() + textBuilder;
 
             if (_actionUrl != null) {
-                var buttonBuilder = new TagBuilder("a");
+                var buttonBuilder = new TagBuilder("button");
                 buttonBuilder.AddCssClass("btn btn-primary");
+                buttonBuilder.MergeAttribute("type", "submit");
                 buttonBuilder.MergeAttribute("id", _buttonId);
                 buttonBuilder.MergeAttribute("data-url", _actionUrl);
                 buttonBuilder.MergeAttribute("href", "#");

@@ -9,6 +9,7 @@ namespace KFZKonfigurator.Binding
         protected string _propertyName;
         protected string _label;
         protected string _placeholder;
+        protected bool _required;
 
         protected AbstractFormElement(string id, string propertyName) {
             _id = id;
