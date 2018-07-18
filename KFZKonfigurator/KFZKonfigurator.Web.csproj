@@ -148,6 +148,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\car.png" />
+    <Content Include="Content\Images\de.png" />
+    <Content Include="Content\Images\en.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Framework\bootstrap.bundle.js" />
     <Content Include="Scripts\Framework\bootstrap.bundle.min.js" />
@@ -205,6 +207,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\WebApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -217,13 +220,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KonfiguratorResx.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\ConfigurationRenderer.cs" />
-    <Compile Include="Services\DiControllerFactory.cs" />
+    <Compile Include="Services\ViewModelService.cs" />
+    <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Utils\DiControllerFactory.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\OrderService.cs" />
-    <Compile Include="Services\PriceCalculationService.cs" />
     <Compile Include="Services\UpdateService.cs" />
-    <Compile Include="Utils\AbstractRenderedView.cs" />
     <Compile Include="Utils\MappingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -273,15 +275,12 @@
       <Project>{0778d998-af3a-49eb-a1b8-0f8e53631aa7}</Project>
       <Name>KFZKonfigurator.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KFZKonfigurator.Services\KFZKonfigurator.Services.csproj">
-      <Project>{ff3f69ca-b005-431e-86b1-631270884adf}</Project>
-      <Name>KFZKonfigurator.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Framework\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\KonfiguratorResx.en.resx" />
     <EmbeddedResource Include="Resources\KonfiguratorResx.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>KonfiguratorResx.Designer.cs</LastGenOutput>

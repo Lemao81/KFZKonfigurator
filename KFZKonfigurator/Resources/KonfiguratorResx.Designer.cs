@@ -97,6 +97,15 @@ namespace KFZKonfigurator.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ein Fehler ist aufgetreten - Konfiguration konnte nicht abgeschlossen werden.
+        /// </summary>
+        public static string Error_CompletionFailed {
+            get {
+                return ResourceManager.GetString("Error_CompletionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Es existiert keine Bestellung mit der angegebenen Id.
         /// </summary>
         public static string Error_Invalid_OrderId {
@@ -124,7 +133,7 @@ namespace KFZKonfigurator.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Adresse.
+        ///   Looks up a localized string similar to Email-Adresse.
         /// </summary>
         public static string Label_Email {
             get {

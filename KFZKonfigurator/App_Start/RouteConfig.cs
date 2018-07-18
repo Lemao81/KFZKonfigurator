@@ -10,13 +10,13 @@ namespace KFZKonfigurator
 
             routes.MapRoute(
                 name: "OrderReview",
-                url: "{controller}/order/{orderId}",
+                url: "{controller}/review/{orderId}",
                 defaults: new {controller = "Configuration", action = "OrderReview", orderId = UrlParameter.Optional});
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new {controller = "Configuration", action = "Index", id = UrlParameter.Optional}
+                defaults: new {controller = "Main", action = "Index", id = UrlParameter.Optional}
             );
         }
     }

@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using KFZKonfigurator.Base;
+using KFZKonfigurator.Base.Enum;
 using KFZKonfigurator.Models;
 using KFZKonfigurator.Base.Logging;
 using KFZKonfigurator.BusinessModels;
+using KFZKonfigurator.BusinessModels.Services;
 using KFZKonfigurator.Resources;
 using KFZKonfigurator.Services;
+using KFZKonfigurator.Utils;
 
 namespace KFZKonfigurator.Controllers
 {
     [Log]
     public class ConfigurationController : Controller
     {
-        private const string CONFIGURATION_SESSION_KEY = "configuration_session_key";
         private readonly UpdateService _updateService;
         private readonly OrderService _orderService;
         private readonly KonfiguratorDbContext _dbContext;
@@ -33,23 +34,23 @@ namespace KFZKonfigurator.Controllers
 
         public ActionResult Index() {
             var newConfiguration = _viewModelService.CreateConfigurationViewModel(_dbContext);
-            newConfiguration.Price = _priceCalculationService.CalculatePrice(enginePower: newConfiguration.EnginePower);
+            newConfiguration.Price = _priceCalculationService.CalculatePrice(GetCurrency(), enginePower: newConfiguration.EnginePower);
 
-            Session[CONFIGURATION_SESSION_KEY] = newConfiguration;
+            Session[Constants.ConfigurationSessionKey] = newConfiguration;
 
             return View(newConfiguration);
         }
 
         public JsonResult Update(string propertyName, object newValue) {
             try {
-                var configuration = Session[CONFIGURATION_SESSION_KEY] as ConfigurationViewModel;
+                var configuration = Session[Constants.ConfigurationSessionKey] as ConfigurationViewModel;
                 _updateService.Update(configuration, propertyName, newValue);
 
                 var equipments = _dbContext.FindEquipmentsByIds(configuration.EquipmentValues);
                 var rims = _dbContext.FindRimsById(configuration.RimsValue);
                 var varnish = _dbContext.FindVarnishById(configuration.VarnishValue);
 
-                configuration.Price = _priceCalculationService.CalculatePrice(equipments, rims, varnish, configuration.EnginePower);
+                configuration.Price = _priceCalculationService.CalculatePrice(GetCurrency(), equipments, rims, varnish, configuration.EnginePower);
 
                 return Json(new {configuration.PriceLabel});
             }
@@ -60,16 +61,17 @@ namespace KFZKonfigurator.Controllers
         }
 
         public ActionResult Complete() {
-            var configuration = Session[CONFIGURATION_SESSION_KEY] as ConfigurationViewModel;
+            var configuration = Session[Constants.ConfigurationSessionKey] as ConfigurationViewModel;
             if (configuration == null) Json(new {Error = KonfiguratorResx.Error_CompletionFailed});
 
             var viewModel = _viewModelService.CreateConfigurationOverviewViewModel(configuration);
+
             return PartialView("_ConfigurationOverview", viewModel);
         }
 
         public ActionResult Order() {
             try {
-                var orderId = _orderService.Order(Session[CONFIGURATION_SESSION_KEY] as ConfigurationViewModel);
+                var orderId = _orderService.Order(Session[Constants.ConfigurationSessionKey] as ConfigurationViewModel);
                 _emailService.SendEmail(_dbContext.Orders.Single(_ => _.OrderId == orderId));
 
                 return Json(new {Success = KonfiguratorResx.Success_Order});
@@ -85,6 +87,10 @@ namespace KFZKonfigurator.Controllers
             var viewModel = _viewModelService.CreateConfigurationOverviewViewModel(order);
 
             return View(viewModel);
+        }
+
+        private Currency GetCurrency() {
+            return Global.Language == Constants.CultureDe ? Currency.Euro : Currency.Pound;
         }
     }
 }

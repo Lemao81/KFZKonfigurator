@@ -76,6 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VarnishResx.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\PriceCalculationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -88,14 +89,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\EquipmentResx.en.resx" />
     <EmbeddedResource Include="Resources\EquipmentResx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EquipmentResx.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\RimsResx.en.resx" />
     <EmbeddedResource Include="Resources\RimsResx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RimsResx.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\VarnishResx.en.resx" />
     <EmbeddedResource Include="Resources\VarnishResx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>VarnishResx.Designer.cs</LastGenOutput>

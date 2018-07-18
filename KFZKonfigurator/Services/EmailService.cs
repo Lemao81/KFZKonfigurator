@@ -18,13 +18,13 @@ namespace KFZKonfigurator.Services
                 var smtpServer = WebConfigurationManager.AppSettings["SmtpServer"];
                 var smtpPort = WebConfigurationManager.AppSettings["SmtpPort"];
                 var smtpPassword = WebConfigurationManager.AppSettings["SmtpPassword"];
-                var urlPath = $"Configuration/order/{order.OrderId}";
+                var urlPath = $"/Configuration/review/{order.OrderId}";
 
                 var mailMessage = new MailMessage {From = new MailAddress(emailSender)};
 
                 mailMessage.To.Add(order.User.Email);
                 mailMessage.Subject = string.Format(KonfiguratorResx.Email_Subject_Format, order.Configuration.Name);
-                mailMessage.Body = string.Format(KonfiguratorResx.Email_Body_Format, Environment.NewLine, order.Configuration.Name, order.Price, baseUrl, urlPath);
+                mailMessage.Body = string.Format(KonfiguratorResx.Email_Body_Format, Environment.NewLine, order.Configuration.Name, $"{order.Price:C}", baseUrl, urlPath);
                 mailMessage.IsBodyHtml = true;
 
                 var smtpClient = new SmtpClient(smtpServer, int.Parse(smtpPort)) {

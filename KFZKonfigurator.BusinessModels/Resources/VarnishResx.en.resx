@@ -117,73 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Caption_CompleteButton" xml:space="preserve">
-    <value>Konfiguration abschließen</value>
+  <data name="Beige" xml:space="preserve">
+    <value>beige</value>
   </data>
-  <data name="Caption_OrderButton" xml:space="preserve">
-    <value>Bestellen</value>
+  <data name="Black" xml:space="preserve">
+    <value>black</value>
   </data>
-  <data name="Email_Body_Format" xml:space="preserve">
-    <value>Ihre Kfz-Bestellung (Name: {1}) ist bei uns eingegangen. Gesamtpreis: {2}&lt;br/&gt;&lt;br/&gt;Mit folgendem Link können Sie die Zusammenfassung der Bestellung jederzeit einsehen:&lt;br/&gt;&lt;br/&gt;&lt;a href="{3}{4}"&gt;{3}{4}&lt;/a&gt;</value>
+  <data name="Blue" xml:space="preserve">
+    <value>blue</value>
   </data>
-  <data name="Email_Subject_Format" xml:space="preserve">
-    <value>Kfz-Konfigurator Bestellung '{0}'</value>
+  <data name="Brown" xml:space="preserve">
+    <value>brown</value>
   </data>
-  <data name="Error_CompletionFailed" xml:space="preserve">
-    <value>Ein Fehler ist aufgetreten - Konfiguration konnte nicht abgeschlossen werden</value>
+  <data name="Green" xml:space="preserve">
+    <value>green</value>
   </data>
-  <data name="Error_Invalid_OrderId" xml:space="preserve">
-    <value>Es existiert keine Bestellung mit der angegebenen Id</value>
+  <data name="Metallic" xml:space="preserve">
+    <value>metallic</value>
   </data>
-  <data name="Error_OrderFailed" xml:space="preserve">
-    <value>Ein Fehler ist aufgetreten - Bestellung konnte nicht getätigt werden</value>
+  <data name="Red" xml:space="preserve">
+    <value>red</value>
   </data>
-  <data name="Error_UpdateFailed" xml:space="preserve">
-    <value>Ein Fehler ist aufgetreten - Konfiguration konnte nicht angepasst werden</value>
+  <data name="Silver" xml:space="preserve">
+    <value>silver</value>
   </data>
-  <data name="Label_Email" xml:space="preserve">
-    <value>Email-Adresse</value>
+  <data name="White" xml:space="preserve">
+    <value>white</value>
   </data>
-  <data name="Label_EnginePower" xml:space="preserve">
-    <value>Motorleistung</value>
-  </data>
-  <data name="Label_Equipment" xml:space="preserve">
-    <value>Sonderausstattungen</value>
-  </data>
-  <data name="Label_Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="Label_Ordered" xml:space="preserve">
-    <value>Bestellt am</value>
-  </data>
-  <data name="Label_Price" xml:space="preserve">
-    <value>Preis</value>
-  </data>
-  <data name="Label_Rims" xml:space="preserve">
-    <value>Felgen</value>
-  </data>
-  <data name="Label_Summary" xml:space="preserve">
-    <value>Zusammenfassung</value>
-  </data>
-  <data name="Label_Varnish" xml:space="preserve">
-    <value>Lackierung</value>
-  </data>
-  <data name="Placeholder_Email" xml:space="preserve">
-    <value>Email eingeben...</value>
-  </data>
-  <data name="Placeholder_EnginePower" xml:space="preserve">
-    <value>Motorleistung...</value>
-  </data>
-  <data name="Placeholder_Name" xml:space="preserve">
-    <value>Name der Konfiguration...</value>
-  </data>
-  <data name="Placeholder_Rims" xml:space="preserve">
-    <value>Auswahl der Felgen...</value>
-  </data>
-  <data name="Placeholder_Varnish" xml:space="preserve">
-    <value>Wählen Sie eine Lackierung...</value>
-  </data>
-  <data name="Success_Order" xml:space="preserve">
-    <value>Bestellung wurde aufgegeben</value>
+  <data name="Yellow" xml:space="preserve">
+    <value>yellow</value>
   </data>
 </root>

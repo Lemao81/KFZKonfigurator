@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using KFZKonfigurator.BusinessModels.Model;
 
 namespace KFZKonfigurator.BusinessModels
@@ -38,5 +41,22 @@ namespace KFZKonfigurator.BusinessModels
         public virtual DbSet<Equipment> Equipments { get; set; }
         public virtual DbSet<Rims> Rimses { get; set; }
         public virtual DbSet<Varnish> Varnishes { get; set; }
+
+        public List<Equipment> FindEquipmentsByIds(IEnumerable<int> ids) {
+            if (ids == null || !ids.Any()) return new List<Equipment>();
+            return ids.Select(id => Equipments.Single(_ => _.EquipmentId == id)).ToList();
+        }
+
+        public Rims FindRimsById(int? id) {
+            return !id.HasValue ? null : Rimses.Single(_ => _.RimsId == id);
+        }
+
+        public Varnish FindVarnishById(int? id) {
+            return !id.HasValue ? null : Varnishes.Single(_ => _.VarnishId == id);
+        }
+
+        public Order FindOrderById(Guid? id) {
+            return !id.HasValue ? null : Orders.Single(_ => _.OrderId == id);
+        }
     }
 }

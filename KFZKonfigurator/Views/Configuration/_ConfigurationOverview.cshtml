@@ -1,5 +1,6 @@
 ﻿@model KFZKonfigurator.Models.ConfigurationOverviewViewModel
 @using KFZKonfigurator.Resources
+@using KFZKonfigurator.Utils
 
 <div class="container">
     <br/>
@@ -27,7 +28,7 @@
                 @KonfiguratorResx.Label_EnginePower
             </div>
             <div class="col-3">
-                @Model.EnginePower
+                @($"{Model.EnginePower} {Constants.UnitEngingePower}")
             </div>
         </div>
 
@@ -87,7 +88,7 @@
                 @KonfiguratorResx.Label_Price
             </div>
             <div class="col-3">
-                @Model.PriceLabel
+                @($"{Model.Price:C}")
             </div>
         </div>
     </div>

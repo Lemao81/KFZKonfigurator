@@ -2,7 +2,7 @@
 using System.Web.Routing;
 using Castle.Windsor;
 
-namespace KFZKonfigurator.Services
+namespace KFZKonfigurator.Utils
 {
     public class DiControllerFactory : DefaultControllerFactory
     {

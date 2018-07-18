@@ -8,7 +8,7 @@ namespace KFZKonfigurator.Utils
     public static class MappingExtensions
     {
         public static ConfigurationViewModel MapToViewModel(this Configuration configuration, KonfiguratorDbContext dbContext) {
-            return new ConfigurationViewModel(dbContext) {
+            return new ConfigurationViewModel() {
                 EnginePower = configuration.EnginePower ?? 0,
                 EquipmentValues = configuration.Equipments.Select(_ => _.EquipmentId).ToList(),
                 Name = configuration.Name,

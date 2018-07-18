@@ -26,8 +26,8 @@ $.binding.createKoViewModel = $.binding.createKoViewModel ||
                 .done(function(result) {
                     if (result.Error) {
                         $.utils.showDialog('Fehler', result.Error);
-                    } else if (result.Price) {
-                        viewModel['Price'](result.Price);
+                    } else if (result.PriceLabel) {
+                        viewModel['PriceLabel'](result.PriceLabel);
                     }
                 });
         };

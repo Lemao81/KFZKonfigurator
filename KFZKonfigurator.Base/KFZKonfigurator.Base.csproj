@@ -52,12 +52,12 @@
   <ItemGroup>
     <Compile Include="Attributes\PriceAttribute.cs" />
     <Compile Include="Display.cs" />
+    <Compile Include="Enums\Currency.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Interface\IRenderer.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Logging\LogAttribute.cs" />
     <Compile Include="Logging\LoggingInterceptor.cs" />
-    <Compile Include="Logging\LoggingInterceptorSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

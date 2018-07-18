@@ -37,7 +37,7 @@ namespace KFZKonfigurator.Base
             return GetDisplayInternal(expression.GetPropertyInfo(), attribute => expression.GetPropertyInfo().GetValue(model).ToString());
         }
 
-        public static string GetDisplay(this Enum enumValue) {
+        public static string GetDisplay(this System.Enum enumValue) {
             return GetDisplayInternal(enumValue.GetType().GetMember(enumValue.ToString())[0], attribute => attribute.Name ?? $"{enumValue.GetType().Name}_{enumValue}");
         }
 
@@ -94,7 +94,7 @@ namespace KFZKonfigurator.Base
         }
 
         public static string GetPriceLabel(this decimal? price) {
-            return $"{price:C} {Display.GetCurrencySymbol()}";
+            return $"{price:C}";
         }
     }
 }
